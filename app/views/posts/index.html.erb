@@ -15,12 +15,12 @@
       <%= post.content %>
     </div>
     <div class="vote span2">
-      <a class="like btn btn-success">
-        <%= post.likes %>
+      <a class="like btn btn-success" data-target="<%= post.to_param %>">
+        <span class="count"><%= post.likes %></span>
         <i class="icon-thumbs-up"></i>
       </a>
-      <a class="dislike btn btn-danger">
-        <%= post.dislikes %>
+      <a class="dislike btn btn-danger" data-target="<%= post.to_param %>">
+        <span class="count"><%= post.dislikes %></span>
         <i class="icon-thumbs-down"></i>
       </a>
     </div>

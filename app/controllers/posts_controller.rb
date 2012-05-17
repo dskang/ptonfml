@@ -82,4 +82,18 @@ class PostsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def upvote
+    @post = Post.find(params[:post_id])
+    @post.likes += 1
+    @post.save
+    render json: @post.likes
+  end
+
+  def downvote
+    @post = Post.find(params[:post_id])
+    @post.dislikes += 1
+    @post.save
+    render json: @post.dislikes
+  end
 end
