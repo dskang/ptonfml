@@ -1,5 +1,39 @@
 <p id="notice"><%= notice %></p>
 
+<div class="post">
+  <div class="content span8 well">
+    <%= @post.content %>
+  </div>
+  <div class="vote span2">
+    <a class="like btn btn-success">
+      <%= @post.likes %>
+      <i class="icon-thumbs-up"></i>
+    </a>
+    <a class="dislike btn btn-danger">
+      <%= @post.dislikes %>
+      <i class="icon-thumbs-down"></i>
+    </a>
+  </div>
+</div>
 
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+<div class="comments span10">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_shortname = 'ptonfml';
+    var disqus_developer = 1; // FIXME
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+
+<div class="links span10">
+  <!-- FIXME: Get rid of edit! -->
+  <%= link_to 'Edit', edit_post_path(@post) %> |
+  <%= link_to 'Back', posts_path %>
+</div>
