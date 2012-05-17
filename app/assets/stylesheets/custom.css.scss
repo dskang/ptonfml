@@ -44,6 +44,21 @@ textarea {
     }
 }
 
+/* Notice */
+.notice {
+    color: $successText;
+    background-color: $successBackground;
+}
+
+.error {
+    color: $errorText;
+    background-color: $errorBackground;
+    ul {
+        list-style: none;
+        margin: 0;
+    }
+}
+
 /* Typography */
 
 /*
@@ -118,7 +133,12 @@ input, textarea, select, .uneditable-input {
 }
 
 .vote {
-    padding-bottom: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.submit-button {
+    margin-top: 10px;
 }
 
 /* Miscellaneous */

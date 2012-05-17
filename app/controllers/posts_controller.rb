@@ -45,10 +45,11 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
+        format.html { redirect_to posts_path, notice: 'Your post was successfully submitted.' }
         format.json { render json: @post, status: :created, location: @post }
       else
-        format.html { render action: "new" }
+        @posts = Post.all
+        format.html { render action: "index" }
         format.json { render json: @post.errors, status: :unprocessable_entity }
       end
     end

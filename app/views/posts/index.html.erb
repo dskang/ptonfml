@@ -1,6 +1,13 @@
+<% if notice %>
+<div class="notice well span8">
+  <%= notice %>
+</div>
+<% end %>
+
 <div class="form">
   <%= render 'form' %>
 </div>
+
 <div class="posts">
 <% @posts.each do |post| %>
   <div class="post">

@@ -8,4 +8,6 @@ class Post < ActiveRecord::Base
     preview = words[0..(words_in_preview - 1)].join(' ').parameterize
     "#{id}-#{preview}"
   end
+
+  default_scope order: 'posts.created_at DESC'
 end
