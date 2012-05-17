@@ -1,21 +1,47 @@
-<h1>Listing posts</h1>
-
-<table>
-  <tr>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
+<div class="form">
+  <%= render 'form' %>
+</div>
+<div class="posts">
 <% @posts.each do |post| %>
-  <tr>
-    <td><%= link_to 'Show', post %></td>
-    <td><%= link_to 'Edit', edit_post_path(post) %></td>
-    <td><%= link_to 'Destroy', post, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
+  <div class="post">
+    <div class="content span8 well">
+      <%= post.content %>
+    </div>
+    <div class="vote span2">
+      <a class="like btn btn-success">
+        <%= post.likes %>
+        <i class="icon-thumbs-up"></i>
+      </a>
+      <a class="dislike btn btn-danger">
+        <%= post.dislikes %>
+        <i class="icon-thumbs-down"></i>
+      </a>
+    </div>
+    <div class="span2">
+      <%= link_to 'Comments', post %>
+    </div>
+  </div>
 <% end %>
-</table>
+</div>
 
-<br />
+<!-- <table> -->
+<!-- <% @posts.each do |post| %> -->
+<!--   <tr> -->
+<!--     <th>Content</th> -->
+<!--     <th></th> -->
+<!--     <th></th> -->
+<!--     <th></th> -->
+<!--   </tr> -->
 
-<%= link_to 'New Post', new_post_path %>
+<!--   <tr> -->
+<!--     <td><%= post.content %> -->
+<!--     <td><%= link_to 'Show', post %></td> -->
+<!--     <td><%= link_to 'Edit', edit_post_path(post) %></td> -->
+<!--     <td><%= link_to 'Destroy', post, confirm: 'Are you sure?', method: :delete %></td> -->
+<!--   </tr> -->
+<!-- <% end %> -->
+<!-- </table> -->
+
+<!-- <br /> -->
+
+<!-- <%= link_to 'New Post', new_post_path %> -->

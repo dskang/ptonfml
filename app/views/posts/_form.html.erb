@@ -11,13 +11,12 @@
     </div>
   <% end %>
 
-  <div class="fields">
+  <div class="fields span8">
     <div class="field">
-      <%= f.label :content %>
       <%= f.text_area :content, rows: 2 %>
     </div>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="actions span1">
+    <%= f.submit "Submit", class: "submit-button btn btn-primary" %>
   </div>
 <% end %>

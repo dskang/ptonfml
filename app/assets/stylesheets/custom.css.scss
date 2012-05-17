@@ -110,8 +110,15 @@ input, textarea, select, .uneditable-input {
     @include box-sizing;
 }
 
-textarea {
-    width: 80%;
+/* Post */
+
+.post .content {
+    font-size: 1.4em;
+    line-height: 1.6em;
+}
+
+.vote {
+    padding-bottom: 10px;
 }
 
 /* Miscellaneous */
