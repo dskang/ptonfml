@@ -1,2 +1,8 @@
+/* Bootstrap customizations */
+
+$bootstrap-orange: #f89406;
+$navbarBackground: $bootstrap-orange;
+$navbarBackgroundHighlight: lighten($bootstrap-orange, 10%);
+
 @import "bootstrap";
 @import "bootstrap-responsive";
