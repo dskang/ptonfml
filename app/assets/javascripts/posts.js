@@ -2,6 +2,10 @@
 // All this logic will automatically be available in application.js.
 
 $(function() {
+  // Enable alert dismissal
+  $('.alert').alert();
+
+  // Enable ratings buttons
   $('.like').click(function(e) {
     e.preventDefault();
     var el = $(this);
