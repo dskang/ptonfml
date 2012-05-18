@@ -12,7 +12,7 @@ class PostsController < ApplicationController
   end
 
   def review
-    @posts = Post.where(approved: false)
+    @posts = Post.all
 
     respond_to do |format|
       format.html
@@ -65,7 +65,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to posts_path, notice: 'Your post was successfully submitted. It should appear in a couple hours.' }
+        format.html { redirect_to posts_path, notice: 'Your post was successfully submitted. It should appear soon.' }
         format.json { render json: @post, status: :created, location: @post }
       else
         @posts = Post.all

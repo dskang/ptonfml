@@ -7,15 +7,21 @@
 <table class="table" style="background-color: #FFF">
   <thead>
     <tr>
+      <th class="span1">Approved</th>
       <th class="span1">ID</th>
       <th class="span4">Content</th>
       <th class="span2">Created at</th>
-      <th class="span3">Actions</th>
+      <th class="span2">Actions</th>
     </tr>
   </thead>
   <tbody>
     <% @posts.each do |post| %>
       <tr>
+        <% if post.approved %>
+          <td><i class="icon-ok"></i></td>
+        <% else %>
+          <td><i class="icon-remove"></i></td>
+        <% end %>
         <td><%= link_to post.id, post_path(post) %></td>
         <td><%= post.content %></td>
         <td><%= l post.created_at %></td>
