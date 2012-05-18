@@ -9,31 +9,10 @@
 </div>
 
 <div class="posts">
-<% @posts.each do |post| %>
-  <div class="post">
-    <div class="content span6 well">
-      <%= post.content %>
-    </div>
-      <div class="meta span2">
-        <%= post.created_at.strftime("%I:%M%p on %m/%d/%Y") %>
-      </div>
-    <div class="vote span2">
-      <a class="like btn btn-success" data-target="<%= post.to_param %>">
-        <span class="count"><%= post.likes %></span>
-        <i class="icon-thumbs-up"></i>
-      </a>
-      <a class="dislike btn btn-danger" data-target="<%= post.to_param %>">
-        <span class="count"><%= post.dislikes %></span>
-        <i class="icon-thumbs-down"></i>
-      </a>
-    </div>
-    <div class="span2">
-      <% post_disqus_path = post_path(post) + '#disqus_thread' %>
-      <%= link_to 'Comments', post_disqus_path, class: 'comments-link' %>
-    </div>
-  </div>
-<% end %>
+  <%= render @posts %>
 </div>
+
+<%= will_paginate class: 'pagination center' , page_links: false %>
 
 <script type="text/javascript">
   var disqus_shortname = 'ptonfml';

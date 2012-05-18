@@ -199,3 +199,17 @@ a.comments-link {
 .unapproved {
     background-color: $errorBackground;
 }
+
+/* Pagination */
+.pagination ul {
+    @include border_radius(15px);
+    background-color: $white;
+    a {
+        color: $black;
+        border: none;
+        &:hover {
+            @include border_radius(15px);
+            background-color: $white;
+        }
+    }
+}
