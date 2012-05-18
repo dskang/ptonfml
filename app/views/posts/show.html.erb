@@ -20,7 +20,9 @@
   <div id="disqus_thread"></div>
   <script type="text/javascript">
     var disqus_shortname = 'ptonfml';
-    var disqus_developer = 1; // FIXME
+    <% if Rails.env.development? %>
+      var disqus_developer = 1;
+    <% end %>
 
     /* * * DON'T EDIT BELOW THIS LINE * * */
     (function() {
