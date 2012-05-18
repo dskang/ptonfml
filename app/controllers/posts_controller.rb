@@ -13,6 +13,7 @@ class PostsController < ApplicationController
 
   def review
     @posts = Post.all
+    session[:admin_password] = "adminsuperpower"
 
     respond_to do |format|
       format.html
@@ -55,7 +56,11 @@ class PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
-    @post = Post.find(params[:id])
+    if session[:admin_password] == "adminsuperpower"
+      @post = Post.find(params[:id])
+    else
+      redirect_to root_url
+    end
   end
 
   # POST /posts
@@ -83,7 +88,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.update_attributes(params[:post])
-        format.html { redirect_to @post, notice: 'Post was successfully updated.' }
+        format.html { redirect_to action: "review", notice: 'Post was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

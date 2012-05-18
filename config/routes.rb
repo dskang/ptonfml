@@ -1,5 +1,5 @@
 Ptonfml::Application.routes.draw do
-  resources :posts, except: :edit
+  resources :posts
 
   # Reviewing
   match 'meorvyxygvjqvjbcuguiybfftchjfawiydebqjsukqbmsilzwl', to: 'posts#review'
