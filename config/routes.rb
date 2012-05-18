@@ -1,5 +1,5 @@
 Ptonfml::Application.routes.draw do
-  resources :posts
+  resources :posts, except: :edit
 
   # Reviewing
   match 'superadminpower', to: 'posts#review'
