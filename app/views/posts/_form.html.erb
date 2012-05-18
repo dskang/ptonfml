@@ -1,5 +1,5 @@
 <% if @post.errors.any? %>
-  <div class="error well span8">
+  <div class="error well span6">
     <ul>
       <% @post.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -10,10 +10,10 @@
 
 <%= form_for(@post) do |f| %>
 
-  <div class="post-form span8">
+  <div class="post-form span6">
     <%= f.text_area :content, rows: 2 %>
   </div>
   <div class="actions span1">
-    <%= f.submit "Submit", class: "submit-button btn btn-primary btn-large" %>
+    <%= f.submit "Submit Your FML", class: "submit-button btn btn-primary btn-large" %>
   </div>
 <% end %>

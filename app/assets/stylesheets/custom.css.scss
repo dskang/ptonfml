@@ -1,5 +1,7 @@
 /* Bootstrap customizations */
 
+$gridColumns: 10;
+
 $bootstrap-orange: #f89406;
 $bootstrap-darkGray: #222;
 $navbarBackground: $bootstrap-orange;
@@ -44,6 +46,10 @@ textarea {
     h1 {
         margin-bottom: 10px;
     }
+}
+
+.navbar .brand {
+    font-weight: bold;
 }
 
 /* Notice */
@@ -128,15 +134,24 @@ input, textarea, select, .uneditable-input {
 }
 
 .post-form {
-    margin-bottom: 30px;
+    /* margin-bottom: 30px; */
+}
+
+.form {
+    @include clearfix;
+    margin-bottom: 20px;
 }
 
 /* Post */
 
-.post .content {
-    font-size: 1.6em;
-    line-height: 1.6em;
-    margin-bottom: 40px;
+.post {
+    @include clearfix;
+    margin-bottom: 20px;
+    .content {
+        font-size: 1.6em;
+        line-height: 1.6em;
+        border: 1px solid $grayLight;
+    }
 }
 
 .vote {
