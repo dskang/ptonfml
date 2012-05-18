@@ -65,10 +65,11 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to posts_path, notice: 'Your post was successfully submitted. It should appear soon.' }
+        format.html { redirect_to root_url, notice: 'Your post was successfully submitted. It should appear soon.' }
         format.json { render json: @post, status: :created, location: @post }
       else
-        @posts = Post.all
+        # FIXME: This shows /posts instead of /
+        @posts = Post.where(approved: true)
         format.html { render action: "index" }
         format.json { render json: @post.errors, status: :unprocessable_entity }
       end
