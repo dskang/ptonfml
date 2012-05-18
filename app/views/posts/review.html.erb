@@ -16,10 +16,11 @@
   </thead>
   <tbody>
     <% @posts.each do |post| %>
-      <tr>
         <% if post.approved %>
+      <tr class="approved">
           <td><i class="icon-ok"></i></td>
         <% else %>
+      <tr class="unapproved">
           <td><i class="icon-remove"></i></td>
         <% end %>
         <td><%= link_to post.id, post_path(post) %></td>

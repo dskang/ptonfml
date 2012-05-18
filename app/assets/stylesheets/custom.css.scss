@@ -190,3 +190,12 @@ a.comments-link {
     margin-top: 45px;
     @include box_sizing;
 }
+
+/* Review */
+.approved {
+    background-color: $successBackground;
+}
+
+.unapproved {
+    background-color: $errorBackground;
+}
