@@ -9,7 +9,9 @@
 </div>
 
 <div class="posts">
-  <%= render @posts %>
+  <% @posts.each do |post| %>
+    <%= render post %>
+  <% end %>
 </div>
 
 <%= will_paginate class: 'pagination center' , page_links: false %>
