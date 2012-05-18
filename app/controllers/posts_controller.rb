@@ -45,7 +45,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to posts_path, notice: 'Your post was successfully submitted.' }
+        format.html { redirect_to posts_path, notice: 'Your post was successfully submitted. It should appear in the next couple hours.' }
         format.json { render json: @post, status: :created, location: @post }
       else
         @posts = Post.all
