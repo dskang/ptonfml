@@ -9,9 +9,7 @@
 </div>
 
 <div class="posts">
-  <% @posts.each do |post| %>
-    <%= render post.html.erb %>
-  <% end %>
+  <%= render @posts %>
 </div>
 
 <%= will_paginate class: 'pagination center' , page_links: false %>
