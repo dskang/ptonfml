@@ -27,6 +27,8 @@ html {
 
 body {
     padding-top: 60px;
+    // FIXME
+    background-color: $grayLighter;
 }
 
 section {
@@ -125,11 +127,16 @@ input, textarea, select, .uneditable-input {
     @include box-sizing;
 }
 
+.post-form {
+    margin-bottom: 30px;
+}
+
 /* Post */
 
 .post .content {
-    font-size: 1.4em;
+    font-size: 1.6em;
     line-height: 1.6em;
+    margin-bottom: 40px;
 }
 
 .vote {
