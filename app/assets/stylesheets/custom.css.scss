@@ -2,11 +2,8 @@
 
 $gridColumns: 10;
 
-$bootstrap-orange: #f89406;
-$bootstrap-darkGray: #222;
-$navbarBackground: $bootstrap-orange;
-$navbarBackgroundHighlight: lighten($bootstrap-orange, 10%);
-$navbarBrandColor: $bootstrap-darkGray;
+$princeton-orange: #EE7F2D;
+$navbarBrandColor: $princeton-orange;
 
 @import "bootstrap";
 @import "bootstrap-responsive";
@@ -29,8 +26,7 @@ html {
 
 body {
     padding-top: 60px;
-    // FIXME
-    background-color: $grayLighter;
+    background-color: $princeton-orange;
 }
 
 section {
@@ -142,6 +138,10 @@ input, textarea, select, .uneditable-input {
     margin-bottom: 20px;
 }
 
+.submit-button {
+    margin-top: 10px;
+}
+
 /* Post */
 
 .post {
@@ -159,8 +159,21 @@ input, textarea, select, .uneditable-input {
     margin-bottom: 10px;
 }
 
-.submit-button {
-    margin-top: 10px;
+a.comments-link {
+    color: $white;
+    &:hover {
+        color: $white;
+    }
+}
+
+.comments {
+    background-color: $grayLighter;
+}
+.comments a, .links a {
+    color: $grayDark;
+    &:hover {
+        color: $black;
+    }
 }
 
 /* Miscellaneous */

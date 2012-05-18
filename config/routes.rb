@@ -1,7 +1,11 @@
 Ptonfml::Application.routes.draw do
   resources :posts
 
-  # match 'superadminpower' => 'posts#review'
+  # Reviewing
+  match 'superadminpower', to: 'posts#review'
+  match 'posts/:id/approve', to: 'posts#approve', via: 'put'
+
+  # Voting
   match 'posts/upvote', to: 'posts#upvote', via: 'post'
   match 'posts/downvote', to: 'posts#downvote', via: 'post'
 

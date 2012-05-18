@@ -3,11 +3,31 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     @post = Post.new
-    @posts = Post.all
+    @posts = Post.where(approved: true)
 
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @posts }
+    end
+  end
+
+  def review
+    @posts = Post.where(approved: false)
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @posts }
+    end
+  end
+
+  # PUT /posts/1/approve
+  def approve
+    @post = Post.find(params[:id])
+    @post.approved = true
+    if @post.save
+      redirect_to action: 'review', notice: 'Post was successfully approved.'
+    else
+      redirect_to action: 'review'
     end
   end
 
