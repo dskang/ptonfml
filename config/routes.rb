@@ -2,7 +2,7 @@ Ptonfml::Application.routes.draw do
   resources :posts, except: :edit
 
   # Reviewing
-  match 'superadminpower', to: 'posts#review'
+  match 'meorvyxygvjqvjbcuguiybfftchjfawiydebqjsukqbmsilzwl', to: 'posts#review'
   match 'posts/:id/approve', to: 'posts#approve', via: 'put'
 
   # Voting
