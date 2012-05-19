@@ -14,6 +14,7 @@
 class Post < ActiveRecord::Base
   attr_accessible :content
   validates :content, presence: true
+  has_many :comments, as: :commentable
 
   def to_param
     words = content.split(' ')
