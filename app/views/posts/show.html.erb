@@ -4,15 +4,21 @@
   <div class="content span6 well">
     <%= @post.content %>
   </div>
+  <div class="meta timestamp span2">
+    <%= link_to @post.created_at.strftime("%I:%M%p on %m/%d/%Y"), post_path(@post) %>
+  </div>
   <div class="vote span2">
     <a class="like btn btn-success">
-      <%= @post.likes %>
+      <span class="count"><%= @post.likes %></span>
       <i class="icon-thumbs-up"></i>
     </a>
     <a class="dislike btn btn-danger">
-      <%= @post.dislikes %>
+      <span class="count"><%= @post.dislikes %></span>
       <i class="icon-thumbs-down"></i>
     </a>
+  </div>
+  <div class="span2 meta">
+    <%= pluralize(@post.comments.count, 'comment') %>
   </div>
 </div>
 
@@ -20,10 +26,8 @@
   <% unless @post.comments.empty? %>
     <%= render partial: 'comments/comment', collection: @post.comments %>
   <% end %>
-
   <%= render 'comments/form' %>
+  <%= link_to 'Back', root_url %>
 </ul>
 
-<div class="links span10">
-  <%= link_to 'Back', posts_path %>
-</div>
+

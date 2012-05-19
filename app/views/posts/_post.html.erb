@@ -2,8 +2,8 @@
   <div class="content span6 well">
     <%= post.content %>
   </div>
-  <div class="timestamp span2">
-    <%= link_to post.created_at.strftime("%I:%M%p on %m/%d/%Y"), post_path(post), class: 'post-meta' %>
+  <div class="meta timestamp span2">
+    <%= link_to post.created_at.strftime("%I:%M%p on %m/%d/%Y"), post_path(post) %>
   </div>
   <div class="vote span2">
     <a class="like btn btn-success">
@@ -15,7 +15,14 @@
       <i class="icon-thumbs-down"></i>
     </a>
   </div>
-  <div class="span2">
-    <%= link_to 'Comments', "#", class: 'comments-link post-meta' %>
+  <div class="span2 meta">
+    <%= pluralize(post.comments.count, 'Comment') %>
   </div>
+
+  <% unless post.comments.empty? %>
+    <ul class="comments well span7">
+      <%= render partial: 'comments/comment', collection: post.comments %>
+      <%= link_to 'Post Comment', post_path(post) + '#new_comment', class: 'pull-right' %>
+    </ul>
+  <% end %>
 </div>

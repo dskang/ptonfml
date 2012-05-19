@@ -152,7 +152,7 @@ input, textarea, select, .uneditable-input {
         line-height: 1.6em;
         border: 1px solid $grayLight;
     }
-    .timestamp {
+    .timestamp a {
         color: $white;
     }
 }
@@ -162,7 +162,7 @@ input, textarea, select, .uneditable-input {
     margin-bottom: 5px;
 }
 
-a.post-meta {
+.post .meta {
     color: $white;
     &:hover {
         color: $white;
@@ -173,15 +173,18 @@ a.post-meta {
     font-size: 0.8em;
 }
 
+/* Nested comments */
+
+.comments .comments {
+    margin-top: 20px;
+}
+
 /* Comments */
 
 ul.comments {
     list-style: none;
     ul {
         margin-left: 0;
-    }
-    &.comments {
-        margin-top: 20px;
     }
 }
 
@@ -193,6 +196,9 @@ ul.comments {
     }
     .body {
         margin: 10px 0;
+    }
+    .timestamp {
+        color: $black;
     }
 }
 
