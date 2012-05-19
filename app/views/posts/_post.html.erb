@@ -20,7 +20,7 @@
   </div>
 
   <% unless post.comments.empty? %>
-    <ul class="comments well span6">
+    <ul class="comments well span5 offset1">
       <%= render partial: 'comments/comment', collection: post.comments %>
       <%= link_to 'Post Comment', post_path(post) + '#new_comment', class: 'pull-right' %>
     </ul>
