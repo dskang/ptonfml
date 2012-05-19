@@ -1,5 +1,6 @@
 Ptonfml::Application.routes.draw do
   resources :posts
+  resources :comments, only: :create
 
   # Reviewing
   match 'meorvyxygvjqvjbcuguiybfftchjfawiydebqjsukqbmsilzwl', to: 'posts#review'

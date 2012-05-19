@@ -166,19 +166,18 @@ a.post-meta {
     }
 }
 
-.comments {
-    background-color: $grayLighter;
-}
-.comments a, .links a {
-    color: $grayDark;
-    &:hover {
-        color: $black;
-    }
-}
-
-.meta {
+.timestamp {
     font-size: 0.8em;
     color: $white;
+}
+
+/* Comments */
+
+.comments .comments {
+    margin-top: 20px;
+}
+
+.comment {
 }
 
 /* Miscellaneous */

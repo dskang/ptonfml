@@ -16,8 +16,13 @@
   </div>
 </div>
 
-<div class="comments well span8">
-</div>
+<ul class="comments well span8">
+  <% unless @post.comments.empty? %>
+    <%= render partial: 'comments/comment', collection: @post.comments %>
+  <% end %>
+  <input type="textarea">
+  <a href="#" class="btn btn-info pull-right">Submit</a>
+</ul>
 
 <div class="links span10">
   <%= link_to 'Back', posts_path %>
