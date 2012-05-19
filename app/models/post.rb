@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: posts
+#
+#  id         :integer         not null, primary key
+#  content    :text
+#  likes      :integer         default(0)
+#  dislikes   :integer         default(0)
+#  approved   :boolean         default(FALSE)
+#  created_at :datetime        not null
+#  updated_at :datetime        not null
+#
+
 class Post < ActiveRecord::Base
   attr_accessible :content
   validates :content, presence: true
