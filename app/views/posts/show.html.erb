@@ -21,7 +21,7 @@
     <%= render partial: 'comments/comment', collection: @post.comments %>
   <% end %>
 
-  <%= form_for Comment.new, html: { class: 'form-horizontal well' } do |f| %>
+  <%= form_for Comment.new, html: { class: 'form-horizontal well' }, remote: true do |f| %>
   <input name="post_id" type="hidden" value="<%= @post.id %>">
   <div class="control-group">
     <%= f.label :name, class: 'control-label' %>
