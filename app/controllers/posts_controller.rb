@@ -43,17 +43,6 @@ class PostsController < ApplicationController
     end
   end
 
-  # GET /posts/new
-  # GET /posts/new.json
-  def new
-    @post = Post.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @post }
-    end
-  end
-
   # GET /posts/1/edit
   def edit
     if session[:admin_password] == "adminsuperpower"
@@ -67,6 +56,7 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = Post.new(params[:post])
+    @post.ip = request.remote_ip
 
     respond_to do |format|
       if @post.save

@@ -1,5 +1,5 @@
 Ptonfml::Application.routes.draw do
-  resources :posts
+  resources :posts, except: :new
   resources :comments, only: :create
 
   # Reviewing

@@ -8,7 +8,7 @@
   <thead>
     <tr>
       <th class="span1">Approved</th>
-      <th class="span1">ID</th>
+      <th class="span1">IP</th>
       <th class="span4">Content</th>
       <th class="span1">Created at</th>
       <th class="span3">Actions</th>
@@ -23,9 +23,9 @@
       <tr class="unapproved">
           <td><i class="icon-remove"></i></td>
         <% end %>
-        <td><%= link_to post.id, post_path(post) %></td>
+        <td><%= post.ip %></td>
         <td><%= post.content %></td>
-        <td><%= l post.created_at %></td>
+        <td><%= post.created_at.strftime("%I:%M%p %m/%d/%Y") %></td>
         <td>
           <%= link_to 'Edit', edit_post_path(post), class: 'btn' %>
           <%= link_to 'Destroy', post_path(post),
