@@ -74,7 +74,7 @@ class PostsController < ApplicationController
         format.json { render json: @post, status: :created, location: @post }
       else
         # FIXME: This shows /posts instead of /
-        @posts = Post.where(approved: true)
+        @posts = Post.where(approved: true).paginate(page: params[:page])
         format.html { render action: "index" }
         format.json { render json: @post.errors, status: :unprocessable_entity }
       end
