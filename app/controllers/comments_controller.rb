@@ -4,17 +4,18 @@ class CommentsController < ApplicationController
   def create
     @comment = @parent.comments.build(params[:comment])
     if @comment.save
-      render json: true
+      redirect_to @parent
     else
-      render json: false
+      redirect_to root_url
     end
   end
 
   def get_parent
     p params
     @parent = Post.find_by_id(params[:post_id]) if params[:post_id]
-    @parent = Comment.find_by_id(params[:comment_id]) if params[:comment_id]
+    # FIXME: Only allow parent to be post for now
+    # @parent = Comment.find_by_id(params[:comment_id]) if params[:comment_id]
 
-    render json: false unless defined?(@parent)
+    redirect_to root_url unless defined?(@parent)
   end
 end

@@ -152,6 +152,9 @@ input, textarea, select, .uneditable-input {
         line-height: 1.6em;
         border: 1px solid $grayLight;
     }
+    .timestamp {
+        color: $white;
+    }
 }
 
 .vote {
@@ -168,7 +171,6 @@ a.post-meta {
 
 .timestamp {
     font-size: 0.8em;
-    color: $white;
 }
 
 /* Comments */
@@ -178,14 +180,20 @@ ul.comments {
     ul {
         margin-left: 0;
     }
-}
-
-.comments .comments {
-    margin-top: 20px;
+    &.comments {
+        margin-top: 20px;
+    }
 }
 
 .comment {
     border: 1px solid $grayLight;
+    background-color: $white;
+    &.well {
+        padding: 5px 10px;
+    }
+    .body {
+        margin: 10px 0;
+    }
 }
 
 /* Miscellaneous */

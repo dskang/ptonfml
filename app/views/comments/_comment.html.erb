@@ -1,15 +1,14 @@
 <li class="comment well">
-  <div class="name">
-    <%= comment.name %>
-  </div>
-  <div class="meta">
-    <%= comment.created_at.strftime("%I:%M%p on %m/%d/%Y") %>
-  </div>
+  <span class="name">
+    <strong><%= comment.name %></strong>
+  </span>
+  <span class="timestamp pull-right">
+    <% time = comment.created_at %>
+    <%= time.strftime("%I:%M%p on %b #{time.day.ordinalize}, %Y") %>
+  </span>
   <div class="body">
     <%= comment.body %>
   </div>
-  <br />
-  <a href="#">Reply</a>
   <% unless comment.comments.empty? %>
   <ul class="comments">
     <%= render partial: 'comments/comment', collection: comment.comments %>
