@@ -16,7 +16,7 @@
     </a>
   </div>
   <div class="span2 meta">
-    <%= pluralize(post.comments.count, 'Comment') %>
+    <%= link_to pluralize(post.comments.count, 'Comment'), post_path(post) + '#new_comment' %>
   </div>
 
   <% unless post.comments.empty? %>
