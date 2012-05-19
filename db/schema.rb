@@ -14,7 +14,7 @@
 ActiveRecord::Schema.define(:version => 20120519064526) do
 
   create_table "comments", :force => true do |t|
-    t.string   "title"
+    t.string   "name"
     t.string   "body"
     t.integer  "commentable_id"
     t.string   "commentable_type"
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(:version => 20120519064526) do
     t.datetime "updated_at",       :null => false
   end
 
-  add_index "comments", ["commentable_id", "commentable_type"], :name => "index_comments_on_commentable_id_and_commentable_type"
+  add_index "comments", ["commentable_id", "commentable_type"], :name => "commentable_index"
 
   create_table "posts", :force => true do |t|
     t.text     "content"

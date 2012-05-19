@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
   before_filter :get_parent
 
   def create
-    @comment = @parent.comments.build(body: params[:body])
+    @comment = @parent.comments.build(name: params[:name], body: params[:body])
     if @comment.save
       render json: true
     else

@@ -173,11 +173,19 @@ a.post-meta {
 
 /* Comments */
 
+ul.comments {
+    list-style: none;
+    ul {
+        margin-left: 0;
+    }
+}
+
 .comments .comments {
     margin-top: 20px;
 }
 
 .comment {
+    border: 1px solid $grayLight;
 }
 
 /* Miscellaneous */
