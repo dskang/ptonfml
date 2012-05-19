@@ -3,6 +3,7 @@ Ptonfml::Application.routes.draw do
 
   # Reviewing
   match 'meorvyxygvjqvjbcuguiybfftchjfawiydebqjsukqbmsilzwl', to: 'posts#review'
+  match 'wgimadgdmrclytcqandqteihjspatdljycpzahkyhxradwtfta', to: 'posts#review'
   match 'posts/:id/approve', to: 'posts#approve', via: 'put'
 
   # Voting
