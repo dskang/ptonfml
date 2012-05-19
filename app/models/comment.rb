@@ -1,5 +1,5 @@
 class Comment < ActiveRecord::Base
-  attr_accessible :title, :body
+  attr_accessible :name, :body
   validates :body, presence: true
 
   belongs_to :commentable, polymorphic: true

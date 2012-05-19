@@ -88,6 +88,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.update_attributes(params[:post])
+        # FIXME: Notice does not display for some reason
         format.html { redirect_to action: "review", notice: 'Post was successfully updated.' }
         format.json { head :no_content }
       else

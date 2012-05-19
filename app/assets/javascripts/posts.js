@@ -36,4 +36,9 @@ $(function() {
       el.children('.count').html(data);
     });
   });
+
+  // Comments
+  $('.comment-submit').click(function(e) {
+    console.log('hi')
+  })
 })

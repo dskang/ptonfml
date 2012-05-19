@@ -20,8 +20,25 @@
   <% unless @post.comments.empty? %>
     <%= render partial: 'comments/comment', collection: @post.comments %>
   <% end %>
-  <input type="textarea">
-  <a href="#" class="btn btn-info pull-right">Submit</a>
+
+  <%= form_for Comment.new, html: { class: 'form-horizontal well' } do |f| %>
+  <input name="post_id" type="hidden" value="<%= @post.id %>">
+  <div class="control-group">
+    <%= f.label :name, class: 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :name, class: 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :body, 'Comment', class: 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :body, rows: 2 %>
+    </div>
+  </div>
+  <div class="form-actions">
+    <%= f.submit "Submit", class: "btn btn-primary" %>
+  </div>
+  <% end %>
 </ul>
 
 <div class="links span10">
