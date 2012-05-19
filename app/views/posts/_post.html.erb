@@ -3,7 +3,7 @@
     <%= post.content %>
   </div>
   <div class="meta span2">
-    <%= post.created_at.strftime("%I:%M%p on %m/%d/%Y") %>
+    <%= link_to post.created_at.strftime("%I:%M%p on %m/%d/%Y"), post_path(post), class: 'post-meta' %>
   </div>
   <div class="vote span2">
     <a class="like btn btn-success" data-target="<%= post.to_param %>">
@@ -16,7 +16,6 @@
     </a>
   </div>
   <div class="span2">
-    <% post_disqus_path = post_path(post) + '#disqus_thread' %>
-    <%= link_to 'Comments', post_disqus_path, class: 'comments-link' %>
+    <%= link_to 'Comments', "#", class: 'comments-link post-meta' %>
   </div>
 </div>
