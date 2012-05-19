@@ -1,4 +1,4 @@
-<div class="post">
+<div class="post" data-target="<%= post.to_param %>">
   <div class="content span6 well">
     <%= post.content %>
   </div>
@@ -6,11 +6,11 @@
     <%= link_to post.created_at.strftime("%I:%M%p on %m/%d/%Y"), post_path(post), class: 'post-meta' %>
   </div>
   <div class="vote span2">
-    <a class="like btn btn-success" data-target="<%= post.to_param %>">
+    <a class="like btn btn-success">
       <span class="count"><%= post.likes %></span>
       <i class="icon-thumbs-up"></i>
     </a>
-    <a class="dislike btn btn-danger" data-target="<%= post.to_param %>">
+    <a class="dislike btn btn-danger">
       <span class="count"><%= post.dislikes %></span>
       <i class="icon-thumbs-down"></i>
     </a>

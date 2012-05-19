@@ -9,11 +9,14 @@ $(function() {
   $('.like').click(function(e) {
     e.preventDefault();
     var el = $(this);
-    var post_id = el.attr('data-target');
+    var post = el.closest('.post');
+    // Disable buttons
+    var buttons = post.find('.vote a');
+    buttons.addClass('disabled');
+    buttons.off('click');
+    // Submit vote
+    var post_id = post.attr('data-target');
     $.post('/posts/upvote', {'post_id': post_id}, function(data) {
-      // Disable button
-      el.addClass('disabled');
-      el.off('click');
       // Update count
       el.children('.count').html(data);
     });
@@ -21,11 +24,14 @@ $(function() {
   $('.dislike').click(function(e) {
     e.preventDefault();
     var el = $(this);
-    var post_id = el.attr('data-target');
+    var post = el.closest('.post');
+    // Disable buttons
+    var buttons = post.find('.vote a');
+    buttons.addClass('disabled');
+    buttons.off('click');
+    // Submit vote
+    var post_id = post.attr('data-target');
     $.post('/posts/downvote', {'post_id': post_id}, function(data) {
-      // Disable button
-      el.addClass('disabled');
-      el.off('click');
       // Update count
       el.children('.count').html(data);
     });
