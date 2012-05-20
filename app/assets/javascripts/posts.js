@@ -69,7 +69,7 @@ $(function() {
   });
 
   $('.comment-form').submit(function(e) {
-    // FIXME: What's really going on here?
+    // FIXME: Why does reloading happen after submission?
     location.reload();
   });
 
