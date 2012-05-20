@@ -53,21 +53,14 @@ class PostsController < ApplicationController
   end
 
   # POST /posts
-  # POST /posts.json
   def create
     @post = Post.new(params[:post])
     @post.ip = request.remote_ip
 
-    respond_to do |format|
-      if @post.save
-        format.html { redirect_to root_url, notice: 'Your post was successfully submitted. It should appear soon.' }
-        format.json { render json: @post, status: :created, location: @post }
-      else
-        # FIXME: This shows /posts instead of /
-        @posts = Post.where(approved: true).paginate(page: params[:page])
-        format.html { render action: "index" }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
-      end
+    if @post.save
+      redirect_to root_url, notice: 'Your post was successfully submitted. It should appear soon.'
+    else
+      redirect_to root_url
     end
   end
 
