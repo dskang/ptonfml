@@ -183,7 +183,9 @@ input, textarea, select, .uneditable-input {
 
 ul.comments {
     list-style: none;
-    padding-left: 40px;
+    ul {
+        margin-left: 0;
+    }
 }
 
 .comment {
