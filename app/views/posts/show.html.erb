@@ -1,31 +1,37 @@
 <p id="notice"><%= notice %></p>
 
-<div class="post">
-  <div class="content span6 well">
-    <%= @post.content %>
-  </div>
-  <div class="meta span2">
-    <div class="timestamp ">
-      <%= link_to @post.created_at.strftime("%I:%M%p on %m/%d/%Y"), post_path(@post) %>
+<div class="post span8 well">
+  <div class="row">
+    <div class="content span6 well">
+      <%= @post.content %>
     </div>
-    <div class="vote">
-      <a class="like btn btn-success">
-        <span class="count"><%= @post.likes %></span>
-        <i class="icon-thumbs-up"></i>
-      </a>
-      <a class="dislike btn btn-danger">
-        <span class="count"><%= @post.dislikes %></span>
-        <i class="icon-thumbs-down"></i>
-      </a>
+    <div class="span2">
+      <div class="meta center">
+        <%= link_to @post.created_at.strftime("%I:%M%p on %m/%d/%Y"), post_path(@post), class: 'timestamp' %>
+        <div class="vote">
+          <a class="like btn btn-success">
+            <span class="count"><%= @post.likes %></span>
+            <i class="icon-thumbs-up"></i>
+          </a>
+          <a class="dislike btn btn-danger">
+            <span class="count"><%= @post.dislikes %></span>
+            <i class="icon-thumbs-down"></i>
+          </a>
+        </div>
+        <%= link_to 'Post Comment', post_path(@post) + '#new_comment', class: 'post-comment' %>
+      </div>
     </div>
-    <%= link_to pluralize(@post.comments.count, 'Comment'), post_path(@post) + '#new_comment' %>
   </div>
 
-  <ul class="comments well span6">
-    <% unless @post.comments.empty? %>
-      <%= render partial: 'comments/comment', collection: @post.comments %>
-    <% end %>
-    <%= render 'comments/form' %>
-    <%= link_to 'Back', root_url %>
-  </ul>
+  <div class="row">
+      <div class="span8">
+        <ul class="comments">
+          <% unless @post.comments.empty? %>
+            <%= render partial: 'comments/comment', collection: @post.comments %>
+          <% end %>
+          <%= render 'comments/form' %>
+          <%= link_to 'Back', root_url %>
+        </ul>
+      </div>
+  </div>
 </div>
