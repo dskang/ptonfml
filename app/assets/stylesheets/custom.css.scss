@@ -1,6 +1,6 @@
 /* Bootstrap customizations */
 
-$gridColumns: 10;
+$gridColumns: 12;
 
 $princeton-orange: #EE7F2D;
 $navbarBrandColor: $princeton-orange;
@@ -196,4 +196,10 @@ ul.comments {
             background-color: $white;
         }
     }
+}
+
+/* Sidebar */
+
+.sidebar {
+    @include box-sizing;
 }
