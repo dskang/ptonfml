@@ -153,6 +153,10 @@ ul.comments {
     @include box_sizing;
 }
 
+.load-status {
+    color: $white;
+}
+
 /* Review */
 .approved {
     background-color: $successBackground;

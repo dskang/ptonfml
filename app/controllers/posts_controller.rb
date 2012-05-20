@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     @post = Post.new
-    @posts = Post.where(approved: true).paginate(page: params[:page])
+    @posts = Post.where(approved: true).paginate(page: params[:page], per_page: 20)
 
     respond_to do |format|
       format.html # index.html.erb

@@ -41,4 +41,14 @@ $(function() {
   $('.comment-submit').click(function(e) {
     console.log('hi')
   })
+
+  // Infinite scroll
+  $('.posts').infinitescroll({
+    navSelector: 'div.pagination',
+    nextSelector: 'div.pagination a:last',
+    itemSelector: '.posts div.post',
+    loading: {
+      selector: '.load-status'
+    }
+  });
 })
