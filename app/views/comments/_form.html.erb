@@ -1,18 +1,19 @@
-  <%= form_for Comment.new, html: { class: 'form-horizontal well' } do |f| %>
-  <input name="post_id" type="hidden" value="<%= post.id %>">
+  <%= form_for Comment.new, remote: true, html: { class: 'form-horizontal well' } do |f| %>
+  <input name="post_id" type="hidden" value="<%= post.id if defined? post %>">
   <div class="control-group">
     <%= f.label :name, class: 'control-label' %>
     <div class="controls">
-      <%= f.text_field :name, autofocus: true, class: 'text_field' %>
+      <%= f.text_field :name, class: 'name-field' %>
     </div>
   </div>
   <div class="control-group">
     <%= f.label :body, 'Comment', class: 'control-label' %>
     <div class="controls">
-      <%= f.text_area :body, rows: 2 %>
+      <%= f.text_area :body, rows: 2, class: 'comment-field' %>
     </div>
   </div>
   <div class="form-actions">
-    <%= f.submit "Submit", class: "btn btn-primary" %>
+    <%= f.submit "Submit", class: "btn btn-primary submit-comment" %>
+    <button class="btn cancel-comment">Cancel</button>
   </div>
   <% end %>

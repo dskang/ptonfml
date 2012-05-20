@@ -27,7 +27,6 @@
           <% unless post.comments.empty? %>
             <%= render partial: 'comments/comment', collection: post.comments %>
           <% end %>
-          <%= render partial: 'comments/form', locals: { post: post } %>
         </ul>
       </div>
   </div>

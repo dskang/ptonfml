@@ -12,5 +12,9 @@
   <%= render @posts %>
 </div>
 
+<div class="new-comment" style="display: none;">
+  <%= render partial: 'comments/form' %>
+</div>
+
 <%= will_paginate class: 'pagination center' , page_links: false %>
 <div class="load-status center span10"></div>

@@ -38,9 +38,39 @@ $(function() {
   });
 
   // Comments
-  $('.comment-submit').click(function(e) {
-    console.log('hi')
-  })
+  $('.post-comment').click(function(e) {
+    e.preventDefault();
+    // Get comment form
+    var comment_form = $('.new-comment');
+    // Clear form
+    comment_form.find('.name-field').val('');
+    comment_form.find('.comment-field').val('');
+    // Insert comment form after post
+    var el = $(this);
+    var post = el.closest('.post');
+    var comments = post.find('ul.comments');
+    comments.append(comment_form);
+    comment_form.show();
+    // Scroll to comment
+    // offset by 60 due to fixed header nav bar
+    $('html, body').scrollTop(comment_form.offset().top - 60);
+    // Focus on name
+    comment_form.find('.name-field').focus();
+    // Set post id for comment form
+    var input = comment_form.find('input[name="post_id"]');
+    var post_id = post.attr('data-target');
+    input.attr('value', post_id);
+  });
+
+  $('.cancel-comment').click(function(e) {
+    var comment_form = $('.new-comment');
+    comment_form.hide();
+  });
+
+  $('.submit-comment').click(function(e) {
+    // Add comment to DOM
+    // Clear comment form
+  });
 
   // Infinite scroll
   $('.posts').infinitescroll({
