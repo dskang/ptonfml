@@ -1,10 +1,10 @@
 <li class="comment">
-  <span class="name">
-    <strong><%= comment.name %></strong>
-  </span>
   <span class="timestamp pull-right">
     <% time = comment.created_at %>
     <%= time.strftime("%I:%M%p on %b #{time.day.ordinalize}, %Y") %>
+  </span>
+  <span class="name">
+    <strong><%= comment.name %></strong>
   </span>
   <div class="body">
     <%= comment.body %>
