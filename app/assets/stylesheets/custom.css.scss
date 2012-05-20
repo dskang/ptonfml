@@ -89,6 +89,7 @@ input, textarea, select, .uneditable-input {
     @include clearfix;
     .content {
         @include box-sizing;
+        margin-bottom: 0;
         font-size: 1.6em;
         line-height: 1.6em;
         border: 1px solid $grayLight;
@@ -122,6 +123,7 @@ input, textarea, select, .uneditable-input {
 /* Comments */
 
 ul.comments {
+    margin: 20px;
     list-style: none;
     ul {
         margin-left: 0;
@@ -129,10 +131,8 @@ ul.comments {
 }
 
 .comment {
-    border-bottom: 1px solid $grayLight;
+    border-top: 1px solid $grayLight;
     padding: 10px;
-    padding-top: 0px;
-    margin-bottom: 10px;
     .body {
         margin: 10px 0;
     }
