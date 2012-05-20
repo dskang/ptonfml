@@ -189,8 +189,7 @@ ul.comments {
 }
 
 .comment {
-    border: 1px solid $grayLight;
-    background-color: $white;
+    border-bottom: 1px solid $grayLight;
     margin-bottom: 10px;
     padding: 5px 10px;
     .body {
