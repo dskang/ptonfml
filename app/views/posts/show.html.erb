@@ -20,14 +20,12 @@
   <div class="span2 meta">
     <%= link_to pluralize(@post.comments.count, 'Comment'), post_path(@post) + '#new_comment' %>
   </div>
+
+  <ul class="comments well span6">
+    <% unless @post.comments.empty? %>
+      <%= render partial: 'comments/comment', collection: @post.comments %>
+    <% end %>
+    <%= render 'comments/form' %>
+    <%= link_to 'Back', root_url %>
+  </ul>
 </div>
-
-<ul class="comments well span6">
-  <% unless @post.comments.empty? %>
-    <%= render partial: 'comments/comment', collection: @post.comments %>
-  <% end %>
-  <%= render 'comments/form' %>
-  <%= link_to 'Back', root_url %>
-</ul>
-
-
