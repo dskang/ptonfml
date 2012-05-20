@@ -40,36 +40,37 @@ $(function() {
   // Comments
   $('.post-comment').click(function(e) {
     e.preventDefault();
-    // Get comment form
     var comment_form = $('.new-comment');
     // Clear form
     comment_form.find('.name-field').val('');
     comment_form.find('.comment-field').val('');
     // Insert comment form after post
-    var el = $(this);
-    var post = el.closest('.post');
+    var post = $(this).closest('.post');
     var comments = post.find('ul.comments');
     comments.append(comment_form);
     comment_form.show();
     // Scroll to comment
-    // offset by 60 due to fixed header nav bar
-    $('html, body').scrollTop(comment_form.offset().top - 60);
+    $('html, body').scrollTop(comment_form.offset().top - 300);
     // Focus on name
     comment_form.find('.name-field').focus();
     // Set post id for comment form
-    var input = comment_form.find('input[name="post_id"]');
     var post_id = post.attr('data-target');
+    var input = comment_form.find('input[name="post_id"]');
     input.attr('value', post_id);
   });
 
   $('.cancel-comment').click(function(e) {
+    e.preventDefault();
     var comment_form = $('.new-comment');
+    // Hide form
+    comment_form.find('.name-field').val('');
+    comment_form.find('.comment-field').val('');
     comment_form.hide();
   });
 
-  $('.submit-comment').click(function(e) {
-    // Add comment to DOM
-    // Clear comment form
+  $('.comment-form').submit(function(e) {
+    // FIXME: What's really going on here?
+    location.reload();
   });
 
   // Infinite scroll

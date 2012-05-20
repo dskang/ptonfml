@@ -3,11 +3,8 @@ class CommentsController < ApplicationController
 
   def create
     @comment = @parent.comments.build(params[:comment])
-    if @comment.save
-      redirect_to post_path(@parent) + '#new_comment'
-    else
-      redirect_to root_url
-    end
+    @comment.save
+    redirect_to root_url
   end
 
   def get_parent
