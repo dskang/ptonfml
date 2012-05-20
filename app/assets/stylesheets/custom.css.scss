@@ -87,14 +87,11 @@ input, textarea, select, .uneditable-input {
 
 .post {
     @include clearfix;
-    margin-bottom: 20px;
     .content {
+        @include box-sizing;
         font-size: 1.6em;
         line-height: 1.6em;
         border: 1px solid $grayLight;
-    }
-    .timestamp a {
-        color: $white;
     }
 }
 
@@ -103,10 +100,15 @@ input, textarea, select, .uneditable-input {
     margin-bottom: 5px;
 }
 
-.post .meta a {
-    color: $white;
-    &:hover {
-        color: $white;
+.meta {
+    margin-left: auto;
+    margin-right: auto;
+    width: 120px;
+    .timestamp, .post-comment {
+        color: $grayDark;
+        &:hover {
+            color: $grayDark;
+        }
     }
 }
 
