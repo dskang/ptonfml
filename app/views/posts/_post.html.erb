@@ -16,18 +16,19 @@
             <i class="icon-thumbs-down"></i>
           </a>
         </div>
-        <%= link_to 'Post Comment', post_path(post) + '#new_comment', class: 'post-comment' %>
+        <%= link_to 'Post Comment', '#', class: 'post-comment' %>
       </div>
     </div>
   </div>
 
   <div class="row">
-    <% unless post.comments.empty? %>
       <div class="span8">
         <ul class="comments">
-          <%= render partial: 'comments/comment', collection: post.comments %>
+          <% unless post.comments.empty? %>
+            <%= render partial: 'comments/comment', collection: post.comments %>
+          <% end %>
+          <%= render partial: 'comments/form', locals: { post: post } %>
         </ul>
       </div>
-    <% end %>
   </div>
 </div>

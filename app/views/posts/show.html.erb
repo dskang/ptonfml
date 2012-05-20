@@ -29,7 +29,7 @@
           <% unless @post.comments.empty? %>
             <%= render partial: 'comments/comment', collection: @post.comments %>
           <% end %>
-          <%= render 'comments/form' %>
+          <%= render partial: 'comments/form', locals: { post: @post } %>
           <%= link_to 'Back', root_url %>
         </ul>
       </div>
