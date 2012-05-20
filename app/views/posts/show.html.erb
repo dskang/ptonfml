@@ -9,11 +9,19 @@
       <div class="meta center">
         <%= link_to @post.created_at.strftime("%I:%M%p on %m/%d/%Y"), post_path(@post), class: 'timestamp' %>
         <div class="vote">
+          <% if @votes.include? @post.id %>
+          <a class="like btn btn-success disabled">
+          <% else %>
           <a class="like btn btn-success">
+          <% end %>
             <span class="count"><%= @post.likes %></span>
             <i class="icon-thumbs-up"></i>
           </a>
+          <% if @votes.include? @post.id %>
+          <a class="dislike btn btn-danger disabled">
+          <% else %>
           <a class="dislike btn btn-danger">
+          <% end %>
             <span class="count"><%= @post.dislikes %></span>
             <i class="icon-thumbs-down"></i>
           </a>

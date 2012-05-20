@@ -36,6 +36,8 @@ $(function() {
       el.children('.count').html(data);
     });
   });
+  // Turn off already voted posts
+  $('.disabled').off('click');
 
   // Comments
   $('.post-comment').click(function(e) {

@@ -5,6 +5,8 @@ class PostsController < ApplicationController
     @post = Post.new
     @posts = Post.where(approved: true).paginate(page: params[:page], per_page: 20)
 
+    @votes = session[:votes]
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @posts }
@@ -36,6 +38,8 @@ class PostsController < ApplicationController
   # GET /posts/1.json
   def show
     @post = Post.find(params[:id])
+
+    @votes = session[:votes]
 
     respond_to do |format|
       format.html # show.html.erb
@@ -97,6 +101,13 @@ class PostsController < ApplicationController
     @post = Post.find(params[:post_id])
     @post.likes += 1
     @post.save
+
+    if session[:votes].nil?
+      session[:votes] = Set.new([@post.id])
+    else
+      session[:votes].add(@post.id)
+    end
+
     render json: @post.likes
   end
 
@@ -104,6 +115,13 @@ class PostsController < ApplicationController
     @post = Post.find(params[:post_id])
     @post.dislikes += 1
     @post.save
+
+    if session[:votes].nil?
+      session[:votes] = Set.new([@post.id])
+    else
+      session[:votes].add(@post.id)
+    end
+
     render json: @post.dislikes
   end
 end
