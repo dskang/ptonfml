@@ -4,7 +4,7 @@
       <%= post.content %>
     </div>
     <div class="span2">
-      <div class="meta">
+      <div class="meta center">
         <%= link_to post.created_at.strftime("%I:%M%p on %m/%d/%Y"), post_path(post), class: 'timestamp' %>
         <div class="vote">
           <a class="like btn btn-success">
