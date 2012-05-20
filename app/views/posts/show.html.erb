@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<div class="post span8 well">
+<div class="post span8 well" data-target="<%= @post.to_param %>">
   <div class="row">
     <div class="content span6 well">
       <%= @post.content %>
