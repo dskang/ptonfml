@@ -3,6 +3,9 @@ class CommentsController < ApplicationController
 
   def create
     @comment = @parent.comments.build(params[:comment])
+    if @comment.name.length == 0
+      @comment.name = "Anonymous"
+    end
     if @comment.save
       render partial: 'comment', locals: { comment: @comment }
     else
