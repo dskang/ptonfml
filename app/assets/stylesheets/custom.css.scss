@@ -89,6 +89,7 @@ input, textarea, select, .uneditable-input {
     @include clearfix;
     .content {
         @include box-sizing;
+        color: $black;
         background-color: $white;
         margin-bottom: 0;
         font-size: 1.6em;
