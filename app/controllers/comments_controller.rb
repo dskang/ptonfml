@@ -3,8 +3,11 @@ class CommentsController < ApplicationController
 
   def create
     @comment = @parent.comments.build(params[:comment])
-    @comment.save
-    redirect_to root_url
+    if @comment.save
+      render partial: 'comment', locals: { comment: @comment }
+    else
+      render nothing: true
+    end
   end
 
   def get_parent

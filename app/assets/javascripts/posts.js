@@ -71,8 +71,13 @@ $(function() {
   });
 
   $('.comment-form').submit(function(e) {
-    // FIXME: Why does reloading happen after submission?
-    location.reload();
+    e.preventDefault();
+    var comments = $(this).closest('.comments');
+    $.post('/comments', $(this).serialize(), function(comment_html) {
+      var comment = $(comment_html);
+      comments.append(comment);
+      $('.cancel-comment').click();
+    });
   });
 
   // Infinite scroll
