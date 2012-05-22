@@ -64,7 +64,7 @@ class PostsController < ApplicationController
     @post.ip = request.remote_ip
 
     if @post.save
-      redirect_to root_url, notice: 'Your post was successfully submitted. It should appear soon.'
+      redirect_to root_url, notice: 'Thanks for submitting! Your post should appear soon.'
     else
       redirect_to root_url
     end
