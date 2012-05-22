@@ -2,7 +2,7 @@
 
 <div class="post span8 well" data-target="<%= @post.to_param %>">
   <div class="row">
-    <div class="content span6 well">
+    <div class="content span6 well <%= 'mod' if @post.admin %>">
       <%= @post.content.html_safe %>
     </div>
     <div class="span2">

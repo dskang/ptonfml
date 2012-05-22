@@ -63,6 +63,10 @@ class PostsController < ApplicationController
     @post = Post.new(params[:post])
     @post.ip = request.remote_ip
 
+    if session[:admin]
+      @post.admin = true
+    end
+
     if @post.save
       redirect_to root_url, notice: 'Thanks for submitting! Your post should appear soon.'
     else
