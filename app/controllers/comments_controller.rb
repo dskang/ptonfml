@@ -12,9 +12,12 @@ class CommentsController < ApplicationController
 
     # Make sure only admins can use admin names
     @is_admin = session[:admin]
-    admin_names = Set.new ['A Boy Named James', 'The Giant Peach']
-    if not @is_admin and admin_names.include? @comment.name
-      @comment.name = "Anonymous"
+    if not @is_admin
+      if @comment.name == 'The Giant Peach'
+        @comment.name = 'Hall of Shame'
+      elsif @comment.name == 'A Boy Named James'
+        @comment.name = "Hall of Lame"
+      end
     end
 
     # Set IP address
