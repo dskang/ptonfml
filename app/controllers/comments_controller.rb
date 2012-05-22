@@ -4,11 +4,21 @@ class CommentsController < ApplicationController
   # POST /comments
   def create
     @comment = @parent.comments.build(params[:comment])
+
+    # Use default name if none
     if @comment.name.length == 0
       @comment.name = "Anonymous"
     end
-    @comment.ip = request.remote_ip
+
+    # Make sure only admins can use admin names
     @is_admin = session[:admin]
+    admin_names = Set.new ['A Boy Named James', 'The Giant Peach']
+    if not @is_admin and admin_names.include? @comment.name
+      @comment.name = "Anonymous"
+    end
+
+    # Set IP address
+    @comment.ip = request.remote_ip
 
     if @comment.save
       render partial: 'comment', locals: { comment: @comment }
