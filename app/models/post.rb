@@ -13,7 +13,7 @@
 
 class Post < ActiveRecord::Base
   attr_accessible :content
-  validates :content, presence: true
+  validates :content, presence: true, length: { minimum: 1 }
   has_many :comments, as: :commentable
 
   def to_param
