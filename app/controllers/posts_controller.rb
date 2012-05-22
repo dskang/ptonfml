@@ -15,7 +15,7 @@ class PostsController < ApplicationController
 
   def review
     @posts = Post.all
-    session[:admin_password] = "adminsuperpower"
+    session[:admin] = true
 
     respond_to do |format|
       format.html
@@ -49,7 +49,7 @@ class PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
-    if session[:admin_password] == "adminsuperpower"
+    if session[:admin]
       @post = Post.find(params[:id])
     else
       redirect_to root_url
