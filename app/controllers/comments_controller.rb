@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
-  before_filter :get_parent
+  before_filter :get_parent, only: :create
 
+  # POST /comments
   def create
     @comment = @parent.comments.build(params[:comment])
     if @comment.name.length == 0
@@ -12,6 +13,16 @@ class CommentsController < ApplicationController
     else
       render nothing: true
     end
+  end
+
+  # DELETE /comments/1
+  def destroy
+    if session[:admin]
+      @comment = Comment.find(params[:id])
+      @comment.destroy
+    end
+
+    redirect_to root_url
   end
 
   def get_parent

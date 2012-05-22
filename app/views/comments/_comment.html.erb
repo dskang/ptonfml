@@ -1,4 +1,10 @@
 <li class="comment">
+  <% if @is_admin %>
+    <%= link_to 'x', comment_path(comment),
+        method: :delete,
+        confirm: 'Are you sure?',
+        class: 'close' %>
+  <% end %>
   <span class="timestamp pull-right">
     <% time = comment.created_at %>
     <%= time.strftime("%I:%M%p on %b #{time.day.ordinalize}, %Y") %>

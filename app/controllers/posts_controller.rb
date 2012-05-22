@@ -6,6 +6,7 @@ class PostsController < ApplicationController
     @posts = Post.where(approved: true).paginate(page: params[:page], per_page: 20)
 
     @votes = session[:votes]
+    @is_admin = session[:admin]
 
     respond_to do |format|
       format.html # index.html.erb
@@ -40,6 +41,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
 
     @votes = session[:votes]
+    @is_admin = session[:admin]
 
     respond_to do |format|
       format.html # show.html.erb
