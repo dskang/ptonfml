@@ -3,7 +3,7 @@
 <div class="post span8 well" data-target="<%= @post.to_param %>">
   <div class="row">
     <div class="content span6 well">
-      <%= @post.content %>
+      <%= @post.content.html_safe %>
     </div>
     <div class="span2">
       <div class="meta center">
