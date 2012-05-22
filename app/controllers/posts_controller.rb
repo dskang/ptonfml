@@ -101,13 +101,18 @@ class PostsController < ApplicationController
 
   def upvote
     @post = Post.find(params[:post_id])
-    @post.likes += 1
-    @post.save
 
-    if session[:votes].nil?
-      session[:votes] = Set.new([@post.id])
-    else
-      session[:votes].add(@post.id)
+    # Check that user has not already voted for this post
+    @votes = session[:votes]
+    if @votes.nil? or not @votes.include? @post.id
+      @post.likes += 1
+      @post.save
+
+      if session[:votes].nil?
+        session[:votes] = Set.new([@post.id])
+      else
+        session[:votes].add(@post.id)
+      end
     end
 
     render json: @post.likes
@@ -115,13 +120,18 @@ class PostsController < ApplicationController
 
   def downvote
     @post = Post.find(params[:post_id])
-    @post.dislikes += 1
-    @post.save
 
-    if session[:votes].nil?
-      session[:votes] = Set.new([@post.id])
-    else
-      session[:votes].add(@post.id)
+    # Check that user has not already voted for this post
+    @votes = session[:votes]
+    if @votes.nil? or not @votes.include? @post.id
+      @post.dislikes += 1
+      @post.save
+
+      if session[:votes].nil?
+        session[:votes] = Set.new([@post.id])
+      else
+        session[:votes].add(@post.id)
+      end
     end
 
     render json: @post.dislikes
