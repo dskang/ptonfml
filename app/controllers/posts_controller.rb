@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_filter :set_as_admin, only: :review
+
   # GET /posts
   # GET /posts.json
   def index
@@ -6,7 +8,6 @@ class PostsController < ApplicationController
     @posts = Post.where(approved: true).paginate(page: params[:page], per_page: 20)
 
     @votes = session[:votes]
-    @is_admin = session[:admin]
 
     respond_to do |format|
       format.html # index.html.erb
@@ -16,7 +17,6 @@ class PostsController < ApplicationController
 
   def review
     @posts = Post.all
-    session[:admin] = true
 
     respond_to do |format|
       format.html
@@ -41,7 +41,6 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
 
     @votes = session[:votes]
-    @is_admin = session[:admin]
 
     respond_to do |format|
       format.html # show.html.erb
@@ -51,7 +50,7 @@ class PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
-    if session[:admin]
+    if is_admin?
       @post = Post.find(params[:id])
     else
       redirect_to root_url
@@ -63,7 +62,7 @@ class PostsController < ApplicationController
     @post = Post.new(params[:post])
     @post.ip = request.remote_ip
 
-    if session[:admin]
+    if is_admin?
       @post.admin = true
     end
 
@@ -139,5 +138,11 @@ class PostsController < ApplicationController
     end
 
     render json: @post.dislikes
+  end
+
+  private
+
+  def set_as_admin
+    session[:admin] = true
   end
 end

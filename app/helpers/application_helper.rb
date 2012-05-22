@@ -8,4 +8,8 @@ module ApplicationHelper
       "#{base_title} | #{page_title}"
     end
   end
+
+  def is_admin?
+    session[:admin]
+  end
 end

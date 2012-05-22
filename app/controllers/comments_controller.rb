@@ -11,8 +11,7 @@ class CommentsController < ApplicationController
     end
 
     # Make sure only admins can use admin names
-    @is_admin = session[:admin]
-    if not @is_admin
+    if not is_admin?
       if @comment.name == 'The Giant Peach'
         @comment.name = 'Hall of Shame'
       elsif @comment.name == 'A Boy Named James'
