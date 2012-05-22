@@ -96,7 +96,8 @@ input, textarea, select, .uneditable-input {
         line-height: 1.6em;
         border: 1px solid $grayLight;
         a {
-            color: $princeton-orange;
+            font-weight: bold;
+            color: $black;
         }
     }
 }
