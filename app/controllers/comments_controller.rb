@@ -8,6 +8,8 @@ class CommentsController < ApplicationController
       @comment.name = "Anonymous"
     end
     @comment.ip = request.remote_ip
+    @is_admin = session[:admin]
+
     if @comment.save
       render partial: 'comment', locals: { comment: @comment }
     else
