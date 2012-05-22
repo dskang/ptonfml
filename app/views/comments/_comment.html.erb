@@ -13,7 +13,7 @@
     <strong><%= comment.name %></strong>
   </span>
   <div class="body">
-    <%= comment.body %>
+    <%= sanitize comment.body.gsub(/\n/, '<br>') %>
   </div>
   <% unless comment.comments.empty? %>
   <ul class="comments">
