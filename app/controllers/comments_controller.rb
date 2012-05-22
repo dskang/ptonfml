@@ -6,6 +6,7 @@ class CommentsController < ApplicationController
     if @comment.name.length == 0
       @comment.name = "Anonymous"
     end
+    @comment.ip = request.remote_ip
     if @comment.save
       render partial: 'comment', locals: { comment: @comment }
     else
