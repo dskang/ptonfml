@@ -9,7 +9,7 @@
     <% time = comment.created_at %>
     <%= time.strftime("%I:%M%p on %b #{time.day.ordinalize}, %Y") %>
   </span>
-  <span class="name">
+  <span class="name <%= 'mod' if admin_names.include? comment.name %>">
     <strong><%= comment.name %></strong>
   </span>
   <div class="body">

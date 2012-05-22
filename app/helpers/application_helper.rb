@@ -12,4 +12,8 @@ module ApplicationHelper
   def is_admin?
     session[:admin]
   end
+
+  def admin_names
+    Set.new ['The Giant Peach', 'A Boy Named James']
+  end
 end
