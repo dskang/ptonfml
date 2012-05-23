@@ -6,8 +6,7 @@
         class: 'close' %>
   <% end %>
   <span class="timestamp pull-right">
-    <% time = comment.created_at %>
-    <%= time.strftime("%I:%M%p on %b #{time.day.ordinalize}, %Y") %>
+    <%= time_ago_in_words comment.created_at %> ago
   </span>
   <span class="name <%= 'mod' if admin_names.include? comment.name %>">
     <strong><%= comment.name %></strong>
