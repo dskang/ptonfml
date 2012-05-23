@@ -1,4 +1,4 @@
-<div class="post span8 well" data-target="<%= post.to_param %>">
+<div class="post span8 well" data-target="<%= post.id %>">
   <div class="row">
     <div class="content span6 well <%= 'mod' if post.admin %>">
       <%= sanitize post.content.gsub(/\n/, '<br>') %>
@@ -21,13 +21,9 @@
     </div>
   </div>
 
-  <div class="row">
-      <div class="span8">
-        <ul class="comments">
-          <% unless post.comments.empty? %>
-            <%= render partial: 'comments/comment', collection: post.comments %>
-          <% end %>
-        </ul>
-      </div>
-  </div>
+  <ul class="comments">
+    <% unless post.comments.empty? %>
+      <%= render partial: 'comments/comment', collection: post.comments %>
+    <% end %>
+  </ul>
 </div>

@@ -34,25 +34,35 @@ var dislike_handler = function(e) {
 }
 
 // Comments
+var comment_comment_handler = function(e) {
+  e.preventDefault();
+  var comment = $(this).closest('.comment-container');
+  show_comment_form(comment, "comment");
+}
+
 var post_comment_handler = function(e) {
   e.preventDefault();
+  var post = $(this).closest('.post');
+  show_comment_form(post, "post");
+}
+
+var show_comment_form = function(parent, type) {
   var comment_form = $('.new-comment');
   // Clear form
   comment_form.find('.name-field').val('');
   comment_form.find('.comment-field').val('');
-  // Insert comment form after post
-  var post = $(this).closest('.post');
-  var comments = post.find('ul.comments');
-  comments.append(comment_form);
+  // Insert comment form after parent
+  var comments = parent.children('ul.comments');
+  comments.prepend(comment_form);
   comment_form.show();
   // Scroll to comment
   $('html, body').scrollTop(comment_form.offset().top - 300);
   // Focus on name
   comment_form.find('.name-field').focus();
-  // Set post id for comment form
-  var post_id = post.attr('data-target');
-  var input = comment_form.find('input[name="post_id"]');
-  input.attr('value', post_id);
+  // Set parent id for comment form
+  var parent_id = parent.attr('data-target');
+  var input = comment_form.find('input[name="' + type + '_id"]');
+  input.attr('value', parent_id);
 }
 
 var cancel_comment_handler = function(e) {
@@ -69,8 +79,10 @@ var comment_submit_handler = function(e) {
   var comments = $(this).closest('.comments');
   $.post('/comments', $(this).serialize(), function(comment_html) {
     var comment = $(comment_html);
+    comment.find('.comment-comment').click(comment_comment_handler);
     comments.append(comment);
     $('.cancel-comment').click();
+    // TODO: Animate scroll to comment and flash background
   });
 }
 
@@ -78,6 +90,7 @@ var unbind_handlers = function() {
   $('a.like').off('click');
   $('a.dislike').off('click');
   $('.post-comment').off('click');
+  $('.comment-comment').off('click');
   $('.cancel-comment').off('click');
   $('.comment-form').off('submit');
 }
@@ -92,6 +105,7 @@ var bind_handlers = function() {
 
   // Comments
   $('.post-comment').click(post_comment_handler);
+  $('.comment-comment').click(comment_comment_handler);
   $('.cancel-comment').click(cancel_comment_handler);
   $('.comment-form').submit(comment_submit_handler);
 }

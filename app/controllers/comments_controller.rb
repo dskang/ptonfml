@@ -40,13 +40,9 @@ class CommentsController < ApplicationController
   end
 
   def get_parent
-    p params
-    @parent = Post.find_by_id(params[:post_id]) if params[:post_id]
-    # FIXME: Only allow parent to be post for now
-    # @parent = Comment.find_by_id(params[:comment_id]) if params[:comment_id]
+    @parent = Post.find_by_id(params[:post_id]) unless params[:post_id].blank?
+    @parent = Comment.find_by_id(params[:comment_id]) unless params[:comment_id].blank?
 
-    # FIXME: if you send an invalid post_id, @parent will be defined!
-    # check for nil instead
-    redirect_to root_url unless defined?(@parent)
+    redirect_to root_url if @parent.nil?
   end
 end
