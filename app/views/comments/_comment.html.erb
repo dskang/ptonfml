@@ -8,7 +8,6 @@
   <span class="name <%= 'mod' if admin_names.include? comment.name %>">
     <strong><%= comment.name %></strong>
   </span>
-  &nbsp;
   <span class="timestamp">
     <%= time_ago_in_words comment.created_at %> ago
   </span>
