@@ -101,9 +101,10 @@ class PostsController < ApplicationController
   def upvote
     @post = Post.find(params[:post_id])
 
+    # FIXME: Uncomment
     # Check that user has not already voted for this post
-    @votes = session[:votes]
-    if @votes.nil? or not @votes.include? @post.id
+    # @votes = session[:votes]
+    # if @votes.nil? or not @votes.include? @post.id
       @post.likes += 1
       @post.save
 
@@ -112,7 +113,7 @@ class PostsController < ApplicationController
       else
         session[:votes].add(@post.id)
       end
-    end
+    # end
 
     render json: @post.likes
   end
@@ -120,9 +121,10 @@ class PostsController < ApplicationController
   def downvote
     @post = Post.find(params[:post_id])
 
+    # FIXME: Uncomment
     # Check that user has not already voted for this post
-    @votes = session[:votes]
-    if @votes.nil? or not @votes.include? @post.id
+    # @votes = session[:votes]
+    # if true or @votes.nil? or not @votes.include? @post.id
       @post.dislikes += 1
       @post.save
 
@@ -131,7 +133,7 @@ class PostsController < ApplicationController
       else
         session[:votes].add(@post.id)
       end
-    end
+    # end
 
     render json: @post.dislikes
   end
