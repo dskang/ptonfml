@@ -123,7 +123,9 @@ $(function() {
     nextSelector: 'div.pagination a:last',
     itemSelector: '.posts div.post',
     loading: {
-      selector: '.load-status'
+      selector: '.load-status',
+      finishedMsg: "Congratulations, you've reached the end of the internet.",
+      msgText: "Loading more posts..."
     }
   }, function() {
     // Unbind handlers and bind them for the new posts
