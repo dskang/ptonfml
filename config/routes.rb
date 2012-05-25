@@ -1,5 +1,11 @@
 Ptonfml::Application.routes.draw do
   resources :posts, except: :new
+
+  # Sorting
+  match 'liked', to: 'posts#liked', as: :most_liked
+  match 'disliked', to: 'posts#disliked', as: :most_disliked
+
+  # Comments
   resources :comments, only: [:create, :destroy]
 
   # Reviewing

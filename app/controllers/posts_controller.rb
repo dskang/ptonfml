@@ -5,12 +5,36 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     @post = Post.new
-    @posts = Post.where(approved: true).paginate(page: params[:page], per_page: 20)
+    @posts = Post.approved.recent.paginate(page: params[:page], per_page: 20)
 
     @votes = session[:votes]
 
     respond_to do |format|
       format.html # index.html.erb
+      format.json { render json: @posts }
+    end
+  end
+
+  def liked
+    @post = Post.new
+    @posts = Post.approved.most_liked.paginate(page: params[:page], per_page: 20)
+
+    @votes = session[:votes]
+
+    respond_to do |format|
+      format.html { render action: 'index' }
+      format.json { render json: @posts }
+    end
+  end
+
+  def disliked
+    @post = Post.new
+    @posts = Post.approved.most_disliked.paginate(page: params[:page], per_page: 20)
+
+    @votes = session[:votes]
+
+    respond_to do |format|
+      format.html { render action: 'index' }
       format.json { render json: @posts }
     end
   end

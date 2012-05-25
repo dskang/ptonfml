@@ -23,5 +23,8 @@ class Post < ActiveRecord::Base
     "#{id}-#{preview}"
   end
 
-  default_scope order: 'posts.created_at DESC'
+  scope :approved, where(approved: true)
+  scope :recent, order: 'posts.created_at DESC'
+  scope :most_liked, order: 'posts.likes DESC'
+  scope :most_disliked, order: 'posts.dislikes DESC'
 end
