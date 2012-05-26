@@ -194,5 +194,10 @@ ul.comments {
 
 .sidebar {
     @include box-sizing;
-    position: fixed;
+}
+
+@media (min-width: 980px) {
+    .sidebar {
+        position: fixed;
+    }
 }
