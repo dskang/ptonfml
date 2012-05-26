@@ -196,7 +196,8 @@ ul.comments {
     @include box-sizing;
 }
 
-@media (min-width: 980px) {
+// Portrait tablet to landscape and desktop
+@media (min-width: 768px) {
     .sidebar {
         position: fixed;
     }
