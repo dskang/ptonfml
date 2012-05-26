@@ -194,4 +194,5 @@ ul.comments {
 
 .sidebar {
     @include box-sizing;
+    position: fixed;
 }
