@@ -5,6 +5,9 @@ Ptonfml::Application.routes.draw do
   match 'liked', to: 'posts#liked', as: :most_liked
   match 'disliked', to: 'posts#disliked', as: :most_disliked
 
+  # Searching
+  match 'search', to: 'posts#search', as: :search
+
   # Comments
   resources :comments, only: [:create, :destroy]
 

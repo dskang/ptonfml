@@ -39,6 +39,18 @@ class PostsController < ApplicationController
     end
   end
 
+  def search
+    @post = Post.new
+    @posts = Post.approved.where("content LIKE ?", '%' + params[:query] + '%').recent.paginate(page: params[:page], per_page: 20)
+
+    @votes = session[:votes]
+
+    respond_to do |format|
+      format.html { render action: 'index' }
+      format.json { render json: @posts }
+    end
+  end
+
   def review
     @posts = Post.recent
 
