@@ -40,7 +40,7 @@ class PostsController < ApplicationController
   end
 
   def review
-    @posts = Post.all
+    @posts = Post.recent
 
     respond_to do |format|
       format.html
