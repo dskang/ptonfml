@@ -1,5 +1,5 @@
 <% if @post.errors.any? %>
-  <div class="error well span6">
+  <div class="error well">
     <ul>
       <% @post.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -9,11 +9,10 @@
 <% end %>
 
 <%= form_for(@post) do |f| %>
-
-  <div class="post-form span6">
-    <%= f.text_area :content, rows: 2 %>
+  <div class="post-form">
+    <%= f.text_area :content, rows: 4 %>
   </div>
-  <div class="actions span1">
+  <div class="actions">
     <%= f.submit "Submit Your Anonymous FML", class: "submit-button btn btn-primary btn-large" %>
   </div>
 <% end %>

@@ -1,20 +1,23 @@
-<% if notice %>
-<div class="notice well span6">
-  <%= notice %>
-</div>
-<% end %>
+<div class="row">
+  <div class="sidebar span3 well">
+    <%= render 'layouts/sidebar' %>
+  </div>
+  <div class="span9">
+    <% if notice %>
+      <div class="notice well span6">
+        <%= notice %>
+      </div>
+    <% end %>
 
-<div class="form">
-  <%= render 'form' %>
-</div>
+    <div class="posts">
+      <%= render @posts %>
+    </div>
 
-<div class="posts">
-  <%= render @posts %>
-</div>
+    <div class="new-comment" style="display: none;">
+      <%= render partial: 'comments/form' %>
+    </div>
 
-<div class="new-comment" style="display: none;">
-  <%= render partial: 'comments/form' %>
+    <%= will_paginate class: 'pagination center' , page_links: false %>
+    <div class="load-status center span10"></div>
+  </div>
 </div>
-
-<%= will_paginate class: 'pagination center' , page_links: false %>
-<div class="load-status center span10"></div>

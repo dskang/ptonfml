@@ -1,7 +1,5 @@
 /* Bootstrap customizations */
 
-$gridColumns: 12;
-
 $princeton-orange: #EE7F2D;
 $navbarBrandColor: $princeton-orange;
 $bodyBackground: $princeton-orange;
@@ -72,15 +70,6 @@ input, textarea, select, .uneditable-input {
     height: auto;
     margin-bottom: 15px;
     @include box-sizing;
-}
-
-.form {
-    @include clearfix;
-    margin-bottom: 20px;
-}
-
-.submit-button {
-    margin-top: 10px;
 }
 
 /* Post */
