@@ -12,13 +12,13 @@
 
       <div class="nav-collapse">
         <ul class="nav">
-          <li>
+          <li class="<%= 'active' if request.url == root_url %>">
             <%= link_to "Most Recent", root_url %>
           </li>
-          <li>
+          <li class="<%= 'active' if request.url == most_liked_url %>">
             <%= link_to "Most Liked", most_liked_url %>
           </li>
-          <li>
+          <li class="<%= 'active' if request.url == most_disliked_url %>">
             <%= link_to "Most Disliked", most_disliked_url %>
           </li>
         </ul>
