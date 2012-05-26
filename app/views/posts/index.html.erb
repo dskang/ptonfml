@@ -3,13 +3,8 @@
     <%= render 'layouts/sidebar' %>
   </div>
   <div class="span9">
-    <% if notice %>
-      <div class="notice well span6">
-        <%= notice %>
-      </div>
-    <% end %>
 
-    <div class="posts">
+    <div class="posts row">
       <%= render @posts %>
     </div>
 

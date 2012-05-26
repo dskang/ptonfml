@@ -47,6 +47,7 @@ textarea {
 }
 
 /* Notice */
+
 .notice {
     color: $successText;
     background-color: $successBackground;
@@ -165,6 +166,7 @@ ul.comments {
 }
 
 /* Review */
+
 .approved {
     background-color: $successBackground;
 }
@@ -174,6 +176,7 @@ ul.comments {
 }
 
 /* Pagination */
+
 .pagination ul {
     @include border_radius(15px);
     background-color: $white;
