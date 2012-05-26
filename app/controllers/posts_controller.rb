@@ -41,7 +41,7 @@ class PostsController < ApplicationController
 
   def search
     @post = Post.new
-    @posts = Post.approved.where("content LIKE ?", '%' + params[:query] + '%').recent.paginate(page: params[:page], per_page: 20)
+    @posts = Post.approved.where("LOWER(content) LIKE ?", '%' + params[:query].downcase + '%').recent.paginate(page: params[:page], per_page: 20)
 
     @votes = session[:votes]
 
