@@ -7,7 +7,6 @@
 <table class="table" style="background-color: #FFF">
   <thead>
     <tr>
-      <th>Approved</th>
       <th>IP</th>
       <th>Content</th>
       <th>Created at</th>
@@ -16,13 +15,11 @@
   </thead>
   <tbody>
     <% @posts.each do |post| %>
-        <% if post.approved %>
+      <% if post.approved %>
       <tr class="approved">
-          <td><i class="icon-ok"></i></td>
-        <% else %>
+      <% else %>
       <tr class="unapproved">
-          <td><i class="icon-remove"></i></td>
-        <% end %>
+      <% end %>
         <td><%= post.ip %></td>
         <td class="<%= 'mod' if post.admin %>"><%= post.content %></td>
         <td><%= post.created_at.strftime("%I:%M%p %m/%d/%Y") %></td>
