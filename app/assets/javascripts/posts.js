@@ -61,8 +61,10 @@ var show_comment_form = function(parent, type) {
   comment_form.find('.name-field').focus();
   // Set parent id for comment form
   var parent_id = parent.attr('data-target');
-  var input = comment_form.find('input[name="' + type + '_id"]');
-  input.attr('value', parent_id);
+  var id_input = comment_form.find('input[name="parent_id"]');
+  id_input.attr('value', parent_id);
+  var type_input = comment_form.find('input[name="parent_type"]');
+  type_input.attr('value', type);
 }
 
 var cancel_comment_handler = function(e) {

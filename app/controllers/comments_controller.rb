@@ -40,8 +40,14 @@ class CommentsController < ApplicationController
   end
 
   def get_parent
-    @parent = Post.find_by_id(params[:post_id]) unless params[:post_id].blank?
-    @parent = Comment.find_by_id(params[:comment_id]) unless params[:comment_id].blank?
+    parent_id = params[:parent_id]
+    parent_type = params[:parent_type]
+
+    if parent_type == 'post'
+      @parent = Post.find_by_id(parent_id)
+    elsif parent_type = 'comment'
+      @parent = Comment.find_by_id(parent_id)
+    end
 
     redirect_to root_url if @parent.nil?
   end
