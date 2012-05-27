@@ -14,7 +14,7 @@
 class Post < ActiveRecord::Base
   attr_accessible :content, :admin
   validates :content, presence: true, length: { minimum: 1 }
-  has_many :comments, as: :commentable
+  has_many :comments, as: :commentable, dependent: :destroy
 
   def to_param
     words = content.split(' ')

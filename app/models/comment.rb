@@ -4,7 +4,7 @@ class Comment < ActiveRecord::Base
   validates :body, presence: true, length: { minimum: 1 }
 
   belongs_to :commentable, polymorphic: true
-  has_many :comments, as: :commentable
+  has_many :comments, as: :commentable, dependent: :destroy
 
   default_scope order: 'comments.created_at ASC'
 end
