@@ -52,7 +52,7 @@ class PostsController < ApplicationController
   end
 
   def review
-    @posts = Post.recent
+    @posts = Post.recent.paginate(page: params[:page], per_page: 20)
 
     respond_to do |format|
       format.html
