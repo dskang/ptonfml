@@ -1,0 +1,30 @@
+<div class="post span8 well" data-target="<%= gif.id %>">
+  <div class="row">
+    <div class="content span6 well center <%= 'mod' if gif.admin %>">
+      <%= image_tag gif.image.url(:medium), class: 'gif' %>
+      <%= simple_format auto_link gif.content %>
+    </div>
+    <div class="span2">
+      <div class="meta center">
+        <%= link_to gif.created_at.strftime("%I:%M%p on %m/%d/%Y"), post_path(gif), class: 'timestamp' %>
+        <div class="vote">
+          <a class="like btn btn-success <%= 'disabled' if @votes and @votes.include? gif.id %>">
+            <span class="count"><%= gif.likes %></span>
+            <i class="icon-thumbs-up"></i>
+          </a>
+          <a class="dislike btn btn-danger <%= 'disabled' if @votes and @votes.include? gif.id %>">
+            <span class="count"><%= gif.dislikes %></span>
+            <i class="icon-thumbs-down"></i>
+          </a>
+        </div>
+        <%= link_to 'Post Comment', '#', class: 'post-comment' %>
+      </div>
+    </div>
+  </div>
+
+  <ul class="comments">
+    <% unless gif.comments.empty? %>
+      <%= render partial: 'comments/comment', collection: gif.comments %>
+    <% end %>
+  </ul>
+</div>
