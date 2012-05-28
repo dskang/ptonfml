@@ -23,9 +23,6 @@ class Post < ActiveRecord::Base
   # Comments
   has_many :comments, as: :commentable, dependent: :destroy
 
-  # Image
-  has_attached_file :image, styles: { medium: "500x500>" }
-
   def to_param
     words = content.split(' ')
     words_in_preview = [words.length, 7].min
@@ -57,6 +54,7 @@ end
 
 class Meme < Post
   attr_accessible :image
+  has_attached_file :image, styles: { medium: "500x500>" }
 
   validates_attachment :image, presence: true, size: { in: 0..10.megabytes }
 
@@ -67,6 +65,7 @@ end
 
 class GIF < Post
   attr_accessible :content, :image
+  has_attached_file :image, styles: { medium: "500x500>" }
 
   validates :content, presence: true
   validates_attachment :image, presence: true, size: { in: 0..10.megabytes }
