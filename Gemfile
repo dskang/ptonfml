@@ -13,6 +13,9 @@ gem 'rails_autolink', '~> 1.0.9'
 # Comments
 # gem 'awesome_nested_set'
 
+# Images
+gem "paperclip", "~> 3.0"
+
 group :development do
   gem 'sqlite3'
   gem 'annotate'

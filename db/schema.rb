@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120528012850) do
+ActiveRecord::Schema.define(:version => 20120528014603) do
 
   create_table "comments", :force => true do |t|
     t.string   "name"
@@ -27,14 +27,18 @@ ActiveRecord::Schema.define(:version => 20120528012850) do
 
   create_table "posts", :force => true do |t|
     t.text     "content"
-    t.integer  "likes",      :default => 0
-    t.integer  "dislikes",   :default => 0
-    t.boolean  "approved",   :default => false
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
+    t.integer  "likes",              :default => 0
+    t.integer  "dislikes",           :default => 0
+    t.boolean  "approved",           :default => false
+    t.datetime "created_at",                            :null => false
+    t.datetime "updated_at",                            :null => false
     t.string   "ip"
-    t.boolean  "admin",      :default => false
+    t.boolean  "admin",              :default => false
     t.string   "type"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   create_table "questions", :force => true do |t|

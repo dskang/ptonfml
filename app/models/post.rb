@@ -20,6 +20,8 @@ class Post < ActiveRecord::Base
   validates :content, presence: true, length: { minimum: 1 }
   has_many :comments, as: :commentable, dependent: :destroy
 
+  has_attached_file :image
+
   def to_param
     words = content.split(' ')
     words_in_preview = [words.length, 7].min

@@ -1,7 +1,7 @@
 <%= form_for(@post) do |f| %>
   <div class="meme-form">
     <%= f.hidden_field :type, value: 'meme' %>
-    <!-- FIXME -->
+    <%= f.file_field :image %>
   </div>
   <div class="actions">
     <%= f.submit "Submit Meme", class: "submit-button btn btn-primary btn-large" %>
