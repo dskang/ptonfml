@@ -1,4 +1,4 @@
-<%= form_for(@post) do |f| %>
+<%= form_for @post, html: { multipart: true } do |f| %>
   <div class="gif-form">
     <%= f.hidden_field :type, value: 'gif' %>
     <%= f.file_field :image %>

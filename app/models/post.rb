@@ -16,11 +16,28 @@
 
 class Post < ActiveRecord::Base
   attr_accessible :content, :admin
+  # Type validation
   validates :type, presence: true
-  validates :content, presence: true, length: { minimum: 1 }
+
+  # Content validation
+  validates :content, presence: true, length: { minimum: 1 }, :if => :has_text?
+
+  # Image validation
+  validates_attachment :image, presence: true, size: { in: 0..10.megabytes }, :if => :has_image?
+  validates :image, attachment_content_type: { content_type: 'image/gif' }, :if => "type == gif"
+
+  # Comments
   has_many :comments, as: :commentable, dependent: :destroy
 
   has_attached_file :image
+
+  def has_text?
+    type == "fml" or type == "gif"
+  end
+
+  def has_image?
+    type == "meme" or type == "gif"
+  end
 
   def to_param
     words = content.split(' ')
