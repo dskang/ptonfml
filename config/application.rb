@@ -55,9 +55,5 @@ module Ptonfml
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
-
-    # Whitelist HTML tags and attributes
-    config.action_view.sanitized_allowed_tags = %w(br a)
-    config.action_view.sanitized_allowed_attributes = %w(href)
   end
 end

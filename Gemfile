@@ -7,6 +7,9 @@ gem 'bootstrap-sass'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 
+# Auto-linking
+gem 'rails_autolink', '~> 1.0.9'
+
 # Comments
 # gem 'awesome_nested_set'
 
