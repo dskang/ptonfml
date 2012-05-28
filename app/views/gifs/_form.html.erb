@@ -2,7 +2,7 @@
   <div class="gif-form">
     <%= f.hidden_field :type, value: 'GIF' %>
     <%= f.file_field :image %>
-    <%= f.text_area :content, rows: 2 %>
+    <%= f.text_area :content, rows: 2, placeholder: 'Caption' %>
   </div>
   <div class="actions">
     <%= f.submit "Submit GIF", class: "submit-button btn btn-primary btn-large" %>

@@ -25,7 +25,7 @@
           <td><i class="icon-remove"></i></td>
         <% end %>
         <td><%= post.ip %></td>
-        <td><%= image_tag post.image.url(:medium) %></td>
+        <td><%= image_tag post.image.url(:medium) if post.type != "FML" %></td>
         <td class="<%= 'mod' if post.admin %>"><%= simple_format auto_link post.content %></td>
         <td><%= post.created_at.strftime("%I:%M%p %m/%d/%Y") %></td>
         <td>
