@@ -1,0 +1,29 @@
+<div class="post span8 well" data-target="<%= meme.id %>">
+  <div class="row">
+    <div class="span6 <%= 'mod' if meme.admin %>">
+      <%= image_tag meme.image.url(:medium) %>
+    </div>
+    <div class="span2">
+      <div class="meta center">
+        <%= link_to meme.created_at.strftime("%I:%M%p on %m/%d/%Y"), post_path(meme), class: 'timestamp' %>
+        <div class="vote">
+          <a class="like btn btn-success <%= 'disabled' if @votes and @votes.include? meme.id %>">
+            <span class="count"><%= meme.likes %></span>
+            <i class="icon-thumbs-up"></i>
+          </a>
+          <a class="dislike btn btn-danger <%= 'disabled' if @votes and @votes.include? meme.id %>">
+            <span class="count"><%= meme.dislikes %></span>
+            <i class="icon-thumbs-down"></i>
+          </a>
+        </div>
+        <%= link_to 'Post Comment', '#', class: 'post-comment' %>
+      </div>
+    </div>
+  </div>
+
+  <ul class="comments">
+    <% unless meme.comments.empty? %>
+      <%= render partial: 'comments/comment', collection: meme.comments %>
+    <% end %>
+  </ul>
+</div>

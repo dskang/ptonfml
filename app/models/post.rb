@@ -23,7 +23,8 @@ class Post < ActiveRecord::Base
   # Comments
   has_many :comments, as: :commentable, dependent: :destroy
 
-  has_attached_file :image
+  # Image
+  has_attached_file :image, styles: { medium: "500x500>" }
 
   def to_param
     words = content.split(' ')
