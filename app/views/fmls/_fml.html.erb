@@ -1,0 +1,29 @@
+<div class="post span8 well" data-target="<%= fml.id %>">
+  <div class="row">
+    <div class="content span6 well <%= 'mod' if fml.admin %>">
+      <%= simple_format auto_link fml.content %>
+    </div>
+    <div class="span2">
+      <div class="meta center">
+        <%= link_to fml.created_at.strftime("%I:%M%p on %m/%d/%Y"), post_path(fml), class: 'timestamp' %>
+        <div class="vote">
+          <a class="like btn btn-success <%= 'disabled' if @votes and @votes.include? fml.id %>">
+            <span class="count"><%= fml.likes %></span>
+            <i class="icon-thumbs-up"></i>
+          </a>
+          <a class="dislike btn btn-danger <%= 'disabled' if @votes and @votes.include? fml.id %>">
+            <span class="count"><%= fml.dislikes %></span>
+            <i class="icon-thumbs-down"></i>
+          </a>
+        </div>
+        <%= link_to 'Post Comment', '#', class: 'post-comment' %>
+      </div>
+    </div>
+  </div>
+
+  <ul class="comments">
+    <% unless fml.comments.empty? %>
+      <%= render partial: 'comments/comment', collection: fml.comments %>
+    <% end %>
+  </ul>
+</div>

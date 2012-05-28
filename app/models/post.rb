@@ -15,29 +15,15 @@
 #
 
 class Post < ActiveRecord::Base
-  attr_accessible :content, :admin
+  attr_accessible :admin, :type
+
   # Type validation
   validates :type, presence: true
-
-  # Content validation
-  validates :content, presence: true, length: { minimum: 1 }, :if => :has_text?
-
-  # Image validation
-  validates_attachment :image, presence: true, size: { in: 0..10.megabytes }, :if => :has_image?
-  validates :image, attachment_content_type: { content_type: 'image/gif' }, :if => "type == gif"
 
   # Comments
   has_many :comments, as: :commentable, dependent: :destroy
 
   has_attached_file :image
-
-  def has_text?
-    type == "fml" or type == "gif"
-  end
-
-  def has_image?
-    type == "meme" or type == "gif"
-  end
 
   def to_param
     words = content.split(' ')
@@ -50,4 +36,38 @@ class Post < ActiveRecord::Base
   scope :recent, order: 'posts.created_at DESC'
   scope :most_liked, order: 'posts.likes DESC'
   scope :most_disliked, order: 'posts.dislikes DESC'
+
+  # Make STI children use Post routes and controller
+  def self.inherited(child)
+    child.instance_eval do
+      def model_name
+        Post.model_name
+      end
+    end
+    super
+  end
+end
+
+class FML < Post
+  attr_accessible :content
+
+  validates :content, presence: true
+end
+
+class Meme < Post
+  attr_accessible :image
+
+  validates_attachment :image, presence: true, size: { in: 0..10.megabytes }
+
+  def to_param
+    id
+  end
+end
+
+class GIF < Post
+  attr_accessible :content, :image
+
+  validates :content, presence: true
+  validates_attachment :image, presence: true, size: { in: 0..10.megabytes }
+  validates :image, attachment_content_type: { content_type: 'image/gif' }
 end

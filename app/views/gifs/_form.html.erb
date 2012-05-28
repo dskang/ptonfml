@@ -1,6 +1,6 @@
 <%= form_for @post, html: { multipart: true } do |f| %>
   <div class="gif-form">
-    <%= f.hidden_field :type, value: 'gif' %>
+    <%= f.hidden_field :type, value: 'GIF' %>
     <%= f.file_field :image %>
     <%= f.text_area :content, rows: 2 %>
   </div>

@@ -95,13 +95,21 @@ class PostsController < ApplicationController
 
   # POST /posts
   def create
-    @post = Post.new(params[:post])
+    type = params[:post][:type]
+    if type == 'FML'
+      @post = FML.new(params[:post])
+    elsif type == 'Meme'
+      @post = Meme.new(params[:post])
+    elsif type == 'GIF'
+      @post = GIF.new(params[:post])
+    end
     @post.ip = request.remote_ip
 
     if @post.save
       redirect_to root_url, notice: 'Thanks for submitting! Your post should appear soon.'
     else
-      redirect_to root_url
+      @posts = Post.approved.recent.paginate(page: params[:page], per_page: 20)
+      render 'index'
     end
   end
 
