@@ -1,5 +1,6 @@
 <%= form_for(@post) do |f| %>
   <div class="gif-form">
+    <%= f.hidden_field :type, value: 'gif' %>
     <!-- FIXME -->
   </div>
   <div class="actions">
