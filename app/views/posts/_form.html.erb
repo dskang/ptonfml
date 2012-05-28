@@ -8,16 +8,22 @@
   </div>
 <% end %>
 
-<%= form_for(@post) do |f| %>
-  <div class="post-form">
-    <%= f.text_area :content, rows: 4 %>
-  </div>
-  <div class="actions">
-    <div class="hidden-tablet">
-      <%= f.submit "Submit Your Anonymous FML", class: "submit-button btn btn-primary btn-large" %>
+<div class="tabbable">
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#tab1" data-toggle="tab">FML</a></li>
+    <li><a href="#tab2" data-toggle="tab">Meme</a></li>
+    <li><a href="#tab3" data-toggle="tab">GIF</a></li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane active" id="tab1">
+      <%= render 'fml_form' %>
     </div>
-    <div class="visible-tablet">
-      <%= f.submit "Submit FML", class: "submit-button btn btn-primary btn-large" %>
+    <div class="tab-pane" id="tab2">
+      <%= render 'meme_form' %>
+    </div>
+    <div class="tab-pane" id="tab3">
+      <%= render 'gif_form' %>
     </div>
   </div>
-<% end %>
+</div>
+
