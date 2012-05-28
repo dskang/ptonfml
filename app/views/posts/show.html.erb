@@ -1,6 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<%= render partial: 'post', locals: { post: @post } %>
+<% if @post.type == 'FML' %>
+  <%= render partial: 'fmls/fml', locals: { fml: @post } %>
+<% elsif @post.type == 'Meme' %>
+  <%= render partial: 'memes/meme', locals: { meme: @post } %>
+<% elsif @post.type == 'GIF' %>
+  <%= render partial: 'gifs/gif', locals: { gif: @post } %>
+<% end %>
 
 <div class="new-comment" style="display: none;">
   <%= render partial: 'comments/form' %>
