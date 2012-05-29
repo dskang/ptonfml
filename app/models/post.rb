@@ -62,7 +62,7 @@ class FML < Post
 end
 
 class Meme < Post
-  validates_attachment :image, presence: true, size: { in: 0..10.megabytes }
+  validates_attachment :image, presence: true, size: { in: 0..4.megabytes }
 
   def to_param
     id
@@ -73,6 +73,6 @@ class GIF < Post
   attr_accessible :content
 
   validates :content, presence: true
-  validates_attachment :image, presence: true, size: { in: 0..10.megabytes }
+  validates_attachment :image, presence: true, size: { in: 0..4.megabytes }
   validates :image, attachment_content_type: { content_type: 'image/gif' }
 end
