@@ -73,6 +73,10 @@ input, input[type="file"], textarea, select, .uneditable-input {
     @include box-sizing;
 }
 
+.image-label {
+    color: $grayLight;
+}
+
 /* Post */
 
 .post {

@@ -1,7 +1,7 @@
 <%= form_for(@post) do |f| %>
   <div class="fml-form">
     <%= f.hidden_field :type, value: 'FML' %>
-    <%= f.label :image, 'Optional image' %>
+    <%= f.label :image, 'Optional image', class: 'image-label' %>
     <%= f.file_field :image %>
     <%= f.text_area :content, rows: 4 %>
   </div>
