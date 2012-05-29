@@ -15,7 +15,7 @@
 #
 
 class Post < ActiveRecord::Base
-  attr_accessible :admin, :type
+  attr_accessible :admin, :type, :image
 
   # Type validation
   validates :type, presence: true
@@ -62,8 +62,6 @@ class FML < Post
 end
 
 class Meme < Post
-  attr_accessible :image
-
   validates_attachment :image, presence: true, size: { in: 0..10.megabytes }
 
   def to_param
@@ -72,7 +70,7 @@ class Meme < Post
 end
 
 class GIF < Post
-  attr_accessible :content, :image
+  attr_accessible :content
 
   validates :content, presence: true
   validates_attachment :image, presence: true, size: { in: 0..10.megabytes }
