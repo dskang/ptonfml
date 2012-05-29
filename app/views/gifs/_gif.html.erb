@@ -1,7 +1,7 @@
 <div class="post span8 well" data-target="<%= gif.id %>">
   <div class="row">
     <div class="content span6 well center <%= 'mod' if gif.admin %>">
-      <%= image_tag gif.image.url(:medium), class: 'image' %>
+      <%= image_tag gif.image.url(:original), class: 'image' %>
       <%= simple_format auto_link gif.content %>
     </div>
     <div class="span2">

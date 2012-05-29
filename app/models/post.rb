@@ -24,7 +24,7 @@ class Post < ActiveRecord::Base
   has_many :comments, as: :commentable, dependent: :destroy
 
   # Image
-  has_attached_file :image, styles: { medium: "500x500>" },
+  has_attached_file :image, styles: { original: "500x500>" },
   storage: :s3,
   bucket: ENV['S3_BUCKET_NAME'],
   s3_credentials: {

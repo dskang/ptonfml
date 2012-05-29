@@ -1,7 +1,7 @@
 <div class="post span8 well" data-target="<%= meme.id %>">
   <div class="row">
     <div class="content span6 well center <%= 'mod' if meme.admin %>">
-      <%= image_tag meme.image.url(:medium) %>
+      <%= image_tag meme.image.url(:original) %>
     </div>
     <div class="span2">
       <div class="meta center">
