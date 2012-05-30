@@ -52,7 +52,13 @@ class PostsController < ApplicationController
   end
 
   def review
-    @posts = Post.unreviewed.recent.paginate(page: params[:page], per_page: 20)
+    if params[:view] == 'approved'
+      @posts = Post.approved.recent.paginate(page: params[:page], per_page: 20)
+    elsif params[:view] == 'disapproved'
+      @posts = Post.where(approved: false).recent.paginate(page: params[:page], per_page: 20)
+    else
+      @posts = Post.unreviewed.recent.paginate(page: params[:page], per_page: 20)
+    end
 
     respond_to do |format|
       format.html
@@ -66,7 +72,9 @@ class PostsController < ApplicationController
     @post.approved = true
     @post.reviewed = true
     if @post.save
-      redirect_to action: 'review', notice: 'Post was successfully approved.'
+      # FIXME: Figure out why notice isn't appearing
+      # redirect_to action: 'review', notice: 'Post was successfully approved.'
+      redirect_to action: 'review'
     else
       redirect_to action: 'review'
     end
@@ -78,7 +86,9 @@ class PostsController < ApplicationController
     @post.approved = false
     @post.reviewed = true
     if @post.save
-      redirect_to action: 'review', notice: 'Post was successfully disapproved.'
+      # FIXME: Figure out why notice isn't appearing
+      # redirect_to action: 'review', notice: 'Post was successfully disapproved.'
+      redirect_to action: 'review'
     else
       redirect_to action: 'review'
     end
