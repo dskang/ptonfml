@@ -7,8 +7,8 @@
 <p>
   <% if request.url != review_url %>
   <%= link_to 'Unreviewed Posts', review_path, class: 'btn btn-info' %>
-  <% elsif request.url != review_url + '?view=approved' %>
-  <%= link_to 'Approved Posts', review_path + '?view=approved', class: 'btn btn-success' %>
+  <% elsif request.url != review_url(view: 'approved') %>
+  <%= link_to 'Approved Posts', review_path(view: 'approved'), class: 'btn btn-success' %>
   <% end %>
 </p>
 
