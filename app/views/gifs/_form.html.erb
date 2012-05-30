@@ -1,10 +1,6 @@
 <%= form_for @post, html: { multipart: true } do |f| %>
-  <div class="gif-form">
-    <%= f.hidden_field :type, value: 'GIF' %>
-    <%= f.file_field :image %>
-    <%= f.text_area :content, rows: 2, placeholder: 'Caption' %>
-  </div>
-  <div class="actions">
-    <%= f.submit "Submit GIF", class: "submit-button btn btn-primary btn-large" %>
-  </div>
+  <%= f.hidden_field :type, value: 'GIF' %>
+  <%= f.file_field :image %>
+  <%= f.text_area :content, rows: 2, placeholder: 'Caption' %>
+  <%= f.submit "Submit GIF", class: "submit-button btn btn-primary btn-large" %>
 <% end %>

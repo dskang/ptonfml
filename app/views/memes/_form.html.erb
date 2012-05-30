@@ -1,9 +1,5 @@
 <%= form_for @post, html: { multipart: true } do |f| %>
-  <div class="meme-form">
-    <%= f.hidden_field :type, value: 'Meme' %>
-    <%= f.file_field :image %>
-  </div>
-  <div class="actions">
-    <%= f.submit "Submit Meme", class: "submit-button btn btn-primary btn-large" %>
-  </div>
+  <%= f.hidden_field :type, value: 'Meme' %>
+  <%= f.file_field :image %>
+  <%= f.submit "Submit Meme", class: "submit-button btn btn-primary btn-large" %>
 <% end %>

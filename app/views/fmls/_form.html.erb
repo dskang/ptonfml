@@ -1,11 +1,7 @@
 <%= form_for @post, html: { multipart: true } do |f| %>
-  <div class="fml-form">
-    <%= f.hidden_field :type, value: 'FML' %>
-    <%= f.label :image, 'Image optional', class: 'image-label' %>
-    <%= f.file_field :image %>
-    <%= f.text_area :content, rows: 4 %>
-  </div>
-  <div class="actions">
-    <%= f.submit "Submit FML", class: "submit-button btn btn-primary btn-large" %>
-  </div>
+  <%= f.hidden_field :type, value: 'FML' %>
+  <%= f.label :image, 'Image optional', class: 'image-label' %>
+  <%= f.file_field :image %>
+  <%= f.text_area :content, rows: 4 %>
+  <%= f.submit "Submit FML", class: "submit-button btn btn-primary btn-large" %>
 <% end %>
