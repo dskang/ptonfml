@@ -40,6 +40,7 @@ class Post < ActiveRecord::Base
   end
 
   scope :approved, where(approved: true)
+  scope :unreviewed, where(reviewed: false)
   scope :recent, order: 'posts.created_at DESC'
   scope :most_liked, order: 'posts.likes DESC'
   scope :most_disliked, order: 'posts.dislikes DESC'

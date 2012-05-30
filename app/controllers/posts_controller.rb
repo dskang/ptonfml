@@ -52,7 +52,7 @@ class PostsController < ApplicationController
   end
 
   def review
-    @posts = Post.recent.paginate(page: params[:page], per_page: 20)
+    @posts = Post.unreviewed.recent.paginate(page: params[:page], per_page: 20)
 
     respond_to do |format|
       format.html
@@ -64,8 +64,21 @@ class PostsController < ApplicationController
   def approve
     @post = Post.find(params[:id])
     @post.approved = true
+    @post.reviewed = true
     if @post.save
       redirect_to action: 'review', notice: 'Post was successfully approved.'
+    else
+      redirect_to action: 'review'
+    end
+  end
+
+  # PUT /posts/1/disapprove
+  def disapprove
+    @post = Post.find(params[:id])
+    @post.approved = false
+    @post.reviewed = true
+    if @post.save
+      redirect_to action: 'review', notice: 'Post was successfully disapproved.'
     else
       redirect_to action: 'review'
     end
