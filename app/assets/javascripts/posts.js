@@ -78,12 +78,15 @@ var cancel_comment_handler = function(e) {
 
 var comment_submit_handler = function(e) {
   e.preventDefault();
+  $('.submit-comment').attr('disabled', 'disabled');
   var comments = $(this).closest('.comments');
   $.post('/comments', $(this).serialize(), function(comment_html) {
     var comment = $(comment_html);
+    // Enable replies to new comment
     comment.find('.comment-comment').click(comment_comment_handler);
     comments.append(comment);
     $('.cancel-comment').click();
+    $('.submit-comment').removeAttr('disabled');
     // TODO: Animate scroll to comment and flash background
   });
 }
