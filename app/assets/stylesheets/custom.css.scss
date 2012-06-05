@@ -81,8 +81,11 @@ input, input[type="file"], textarea, select, .uneditable-input {
 
 .post {
     @include clearfix;
+    .left {
+      @include box-sizing;
+      padding: 15px;
+    }
     .content {
-        @include box-sizing;
         color: $black;
         background-color: $white;
         margin-bottom: 0;
@@ -125,7 +128,7 @@ input, input[type="file"], textarea, select, .uneditable-input {
 
 .fb-like {
   height: 21px;
-  margin: 10px 0;
+  margin: 7px 0;
 }
 
 /* Comments */

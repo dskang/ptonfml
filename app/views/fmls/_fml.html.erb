@@ -1,9 +1,11 @@
 <div class="post span8 well" data-target="<%= fml.id %>">
   <div class="row">
     <% has_image = !fml.image_file_name.blank? %>
-    <div class="content span6 well <%= 'center' if has_image %> <%= 'mod' if fml.admin %>">
-      <%= image_tag fml.image.url(:original), class: 'image' if has_image %>
-      <%= simple_format auto_link fml.content %>
+    <div class="span6 left">
+      <div class="content well <%= 'center' if has_image %> <%= 'mod' if fml.admin %>">
+        <%= image_tag fml.image.url(:original), class: 'image' if has_image %>
+        <%= simple_format auto_link fml.content %>
+      </div>
     </div>
     <div class="span2">
       <div class="meta center">
