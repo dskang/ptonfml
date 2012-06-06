@@ -1,7 +1,13 @@
-<% if notice %>
-  <div class="notice well">
-    <%= notice %>
-  </div>
-<% end %>
+<div class="well center sms">
+  <h2>Text your FML<br /><span class="phone-number">(609) 751-9571</span></h2>
+</div>
 
-<%= render 'posts/form' %>
+<div class="well">
+  <% if notice %>
+    <div class="notice well">
+      <%= notice %>
+    </div>
+  <% end %>
+
+  <%= render 'posts/form' %>
+</div>

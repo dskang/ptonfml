@@ -214,6 +214,15 @@ ul.comments {
     @include box-sizing;
 }
 
+.sms {
+  h2 {
+    font-weight: normal;
+  }
+  .phone-number {
+    color: $infoText;
+  }
+}
+
 // Portrait tablet to landscape and desktop
 @media (min-width: 768px) {
     .sidebar {
