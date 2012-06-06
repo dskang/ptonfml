@@ -1,8 +1,10 @@
 <div class="post span8 well" data-target="<%= gif.id %>">
   <div class="row">
-    <div class="content span6 well center <%= 'mod' if gif.admin %>">
-      <%= image_tag gif.image.url(:original), class: 'image' %>
-      <%= simple_format auto_link gif.content %>
+    <div class="span6 left">
+      <div class="content well center <%= 'mod' if gif.admin %>">
+        <%= image_tag gif.image.url(:original), class: 'image' %>
+        <%= simple_format auto_link gif.content %>
+      </div>
     </div>
     <div class="span2">
       <div class="meta center">
@@ -16,6 +18,9 @@
             <span class="count"><%= gif.dislikes %></span>
             <i class="icon-thumbs-down"></i>
           </a>
+        </div>
+        <div class="fb-like">
+          <iframe src="//www.facebook.com/plugins/like.php?href=<%= u post_url(gif) %>&amp;send=false&amp;layout=button_count&amp;width=80&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21&amp;appId=480322535317003" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:80px; height:21px;" allowTransparency="true"></iframe>
         </div>
         <%= link_to 'Post Comment', '#', class: 'post-comment' %>
       </div>
