@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_filter :set_as_admin, only: :review
+  skip_before_filter :verify_authenticity_token, only: :sms
 
   # GET /posts
   # GET /posts.json
@@ -133,6 +134,18 @@ class PostsController < ApplicationController
     else
       @posts = Post.approved.recent.paginate(page: params[:page], per_page: 20)
       render 'index'
+    end
+  end
+
+  # POST /posts/sms
+  def sms
+    @post = FML.new
+    @post.content = params[:Body]
+    @post.phone = params[:From]
+    if @post.save
+      render text: 'Thanks for submitting! Your post should appear soon.'
+    else
+      render text: @post.errors.full_messages.join
     end
   end
 

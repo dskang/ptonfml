@@ -1,6 +1,9 @@
 Ptonfml::Application.routes.draw do
   resources :posts, except: :new
 
+  # SMS
+  match 'posts/sms', to: 'posts#sms', via: 'post'
+
   # Sorting
   match 'liked', to: 'posts#liked', as: :most_liked
   match 'disliked', to: 'posts#disliked', as: :most_disliked
