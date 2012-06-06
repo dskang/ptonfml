@@ -142,9 +142,9 @@ class PostsController < ApplicationController
     @post = FML.new
     @post.content = params[:Body]
     if @post.save
-      render text: 'Thanks for submitting! Your post should appear soon.'
+      render text: 'Thanks for submitting! Your post should appear soon.', content_type: Mime::TEXT
     else
-      render text: @post.errors.full_messages.join
+      render text: @post.errors.full_messages.join, content_type: Mime::TEXT
     end
   end
 
