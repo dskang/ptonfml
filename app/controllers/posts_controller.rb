@@ -141,7 +141,6 @@ class PostsController < ApplicationController
   def sms
     @post = FML.new
     @post.content = params[:Body]
-    @post.phone = params[:From]
     if @post.save
       render text: 'Thanks for submitting! Your post should appear soon.'
     else
