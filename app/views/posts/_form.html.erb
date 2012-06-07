@@ -1,7 +1,13 @@
-<% if @post.errors.any? %>
+<% if params[:action] == 'show' %>
+  <% post = Post.new %>
+<% else %>
+  <% post = @post %>
+<% end %>
+
+<% if post.errors.any? %>
   <div class="error well">
     <ul>
-      <% @post.errors.full_messages.each do |msg| %>
+      <% post.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
     </ul>
@@ -10,19 +16,19 @@
 
 <div class="tabbable">
   <ul class="nav nav-tabs">
-    <li class="<%= 'active' if @post.type.blank? or @post.type == "FML" %>"><a href="#tab1" data-toggle="tab">FML</a></li>
-    <li class="<%= 'active' if @post.type == "Meme" %>"><a href="#tab2" data-toggle="tab">Meme</a></li>
-    <li class="<%= 'active' if @post.type == "GIF" %>"><a href="#tab3" data-toggle="tab">GIF</a></li>
+    <li class="<%= 'active' if post.type.blank? or post.type == "FML" %>"><a href="#tab1" data-toggle="tab">FML</a></li>
+    <li class="<%= 'active' if post.type == "Meme" %>"><a href="#tab2" data-toggle="tab">Meme</a></li>
+    <li class="<%= 'active' if post.type == "GIF" %>"><a href="#tab3" data-toggle="tab">GIF</a></li>
   </ul>
   <div class="tab-content">
-    <div class="tab-pane <%= 'active' if @post.type.blank? or @post.type == "FML" %>" id="tab1">
-      <%= render 'fmls/form' %>
+    <div class="tab-pane <%= 'active' if post.type.blank? or post.type == "FML" %>" id="tab1">
+      <%= render partial: 'fmls/form', locals: { post: post } %>
     </div>
-    <div class="tab-pane <%= 'active' if @post.type == "Meme" %>" id="tab2">
-      <%= render 'memes/form' %>
+    <div class="tab-pane <%= 'active' if post.type == "Meme" %>" id="tab2">
+      <%= render partial: 'memes/form', locals: { post: post } %>
     </div>
-    <div class="tab-pane <%= 'active' if @post.type == "GIF" %>" id="tab3">
-      <%= render 'gifs/form' %>
+    <div class="tab-pane <%= 'active' if post.type == "GIF" %>" id="tab3">
+      <%= render partial: 'gifs/form', locals: { post: post } %>
     </div>
   </div>
 </div>

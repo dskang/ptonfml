@@ -1,13 +1,16 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="sidebar span3">
+    <%= render 'layouts/sidebar' %>
+  </div>
 
-<% if @post.type == 'FML' %>
-  <%= render partial: 'fmls/fml', locals: { fml: @post } %>
-<% elsif @post.type == 'Meme' %>
-  <%= render partial: 'memes/meme', locals: { meme: @post } %>
-<% elsif @post.type == 'GIF' %>
-  <%= render partial: 'gifs/gif', locals: { gif: @post } %>
-<% end %>
+  <div class="offset3 span9">
+    <div class="posts row">
+      <p id="notice"><%= notice %></p>
+      <%= render @post %>
+    </div>
 
-<div class="new-comment" style="display: none;">
-  <%= render partial: 'comments/form' %>
+    <div class="new-comment" style="display: none;">
+      <%= render partial: 'comments/form' %>
+    </div>
+  </div>
 </div>
