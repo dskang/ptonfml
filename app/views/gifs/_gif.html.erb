@@ -3,7 +3,7 @@
     <div class="span6 left">
       <div class="content well center <%= 'mod' if gif.admin %>">
         <%= image_tag gif.image.url(:original), class: 'image' %>
-        <%= simple_format auto_link gif.content %>
+        <%= simple_format auto_link h gif.content %>
       </div>
     </div>
     <div class="span2">

@@ -34,7 +34,7 @@
         <% end %>
         <td><%= post.ip %></td>
         <td><%= image_tag post.image.url(:original) unless post.image_file_name.blank? %></td>
-        <td class="<%= 'mod' if post.admin %>"><%= simple_format auto_link post.content %></td>
+        <td class="<%= 'mod' if post.admin %>"><%= simple_format auto_link h post.content %></td>
         <td><%= post.created_at.strftime("%I:%M%p %m/%d/%Y") %></td>
         <td>
           <%= link_to 'Edit', edit_post_path(post), class: 'btn' %>
