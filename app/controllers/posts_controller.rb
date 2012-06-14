@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_filter :set_as_admin, only: :review
+  before_filter :authenticate, only: :review
   skip_before_filter :verify_authenticity_token, only: :sms
 
   # GET /posts
@@ -226,5 +227,12 @@ class PostsController < ApplicationController
 
   def set_as_admin
     session[:admin] = true
+  end
+
+  def authenticate
+    authenticate_or_request_with_http_basic do |username, password|
+      username == 'dk' && password == 'twiliorocks' or
+      username == 'pearlman' && password == 'pearlman'
+    end
   end
 end

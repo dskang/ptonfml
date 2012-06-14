@@ -15,7 +15,7 @@ Ptonfml::Application.routes.draw do
   resources :comments, only: [:create, :destroy]
 
   # Reviewing
-  match 'meorvyxygvjqvjbcuguiybfftchjfawiydebqjsukqbmsilzwl', to: 'posts#review', as: :review
+  match 'review', to: 'posts#review', as: :review
 
   match 'posts/:id/approve', to: 'posts#approve', via: 'put', as: :approve_post
   match 'posts/:id/disapprove', to: 'posts#disapprove', via: 'put', as: :disapprove_post
