@@ -45,7 +45,7 @@ class CommentsController < ApplicationController
 
     if parent_type == 'post'
       @parent = Post.find_by_id(parent_id)
-    elsif parent_type = 'comment'
+    elsif parent_type == 'comment'
       @parent = Comment.find_by_id(parent_id)
     end
 
